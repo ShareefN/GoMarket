@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
 	res.send('index.html')
 });
 
+app.use('/', Router.router)
+
 app.listen(port, () => {
 	console.log(`Conneceted to port ${port}`);
 });
