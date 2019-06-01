@@ -1,0 +1,29 @@
+{
+  "name": "gomarket",
+  "version": "1.0.0",
+  "description": "Online Supermarket ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShareefN/GoMarket.git"
+  },
+  "author": "Shareef",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShareefN/GoMarket/issues"
+  },
+  "homepage": "https://github.com/ShareefN/GoMarket#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^1.19.1",
+    "react": "^16.8.6",
+    "sequelize": "^5.8.7"
+  }
+}
