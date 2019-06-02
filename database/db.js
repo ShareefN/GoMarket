@@ -10,12 +10,6 @@ sequelize.authenticate()
  .then(() => console.log('Database Connected!'))
  .catch(err => console.log('Error: ' + err))
 
- app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
  //Schemas
 
  const User = sequelize.define('user', {
@@ -32,8 +26,8 @@ sequelize.authenticate()
     email: { type: Sequelize.STRING, required: true, unique: true },
     username: { type: Sequelize.STRING, required: true, unique: true },
     password: { type: Sequelize.STRING, required: true },
-    location: { type: Sequelize.STRING },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true },
+    imgUrl: { type: Sequelize.STRING },
 		rating: { type: Sequelize.INTEGER },
 		cv: { type: Sequelize.STRING }
  })
