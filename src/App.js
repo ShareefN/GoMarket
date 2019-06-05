@@ -13,6 +13,8 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import AwesomeSlider from 'react-awesome-slider';
+// import AwsSliderStyles from 'react-awesome-slider/src/styles.scss';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -26,8 +28,9 @@ const StyledBadge = withStyles((theme) => ({
 }))(Badge);
 
 const Wrapper = styled.div`
-  width: 100%;
+ width: 5%;
   padding: 10px;
+  slider-height-percentage: 10%;
 `;
 
 const Page = styled.div`
@@ -39,7 +42,8 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      status: ''
+      status: '',
+      spacing: '2',
     }
   }    
 
@@ -51,6 +55,13 @@ class App extends Component{
     title: {
       flexGrow: 1,
     },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
   }
 }
   render(){
@@ -59,7 +70,8 @@ class App extends Component{
       <AppBar position="static">
         <Toolbar>
           <Typography>
-          <img src={logo} style={{width:"150px",height:"120px", paddingRight:"25%"}} href = "#" alt="logo" />
+          <img src={logo} style={{width:"150px",height:"100px", paddingRight:"25%"}} href = "#" alt="logo" />
+          <h3>Cash-On-Delivery | Same-Day-Delivery</h3>
           </Typography>
           <Typography className={this.classes.title} style={{marginLeft: "80%", position: 'absolute'}}>
           <Button color="inherit">Login</Button>
@@ -86,12 +98,23 @@ class App extends Component{
     </Paper>
     <h2>Special Offers</h2>
     <Wrapper>
-      <Slider speed={300} slidesToShow={1} slidesToScroll={1} infinite={false} draggable={true} centerMode={true}>
+    <AwesomeSlider style={{width: '5%', height: '5%'}}>
+    {/* <Slider speed={300} slidesToShow={1} slidesToScroll={1} infinite={false} draggable={true}> */}
+    <div data-src="http://i.imgur.com/kJXRAZH.jpg" />
+    <div data-src="http://i.imgur.com/TaA1gj9.png" />
+    {/* <div data-src="/path/to/image-2.jpg" /> */}
+    {/* </Slider>  */}
+    </AwesomeSlider>
+    </Wrapper>
+    {/* <Wrapper>
+      <Slider speed={300} slidesToShow={1} slidesToScroll={1} infinite={false} draggable={true}>
         <Page>one</Page>
         <Page>two</Page>
         <Page>three</Page>
       </Slider>
-    </Wrapper>
+    </Wrapper> */}
+    <h2>Hot Deals</h2>
+    <h2>New Arrivals</h2>
     </div>
     )
   }
