@@ -33,10 +33,10 @@ const Wrapper = styled.div`
   slider-height-percentage: 10%;
 `;
 
-const Page = styled.div`
-  width: 10%;
-  padding: 10px;
-`;
+// const Page = styled.div`
+//   width: 10%;
+//   padding: 10px;
+// `;
 
 class App extends Component{
   constructor(props){
@@ -92,6 +92,7 @@ class App extends Component{
       >      
         <Tab label="Groceries" />
         <Tab label="Elctronics" />
+        <Tab label="Household Appliences"/>
         <Tab label="Beauty & Personal Care" />
         <Tab label="Excersie / Workout"/>
       </Tabs>
@@ -100,8 +101,8 @@ class App extends Component{
     <Wrapper>
     <AwesomeSlider style={{width: '5%', height: '5%'}}>
     {/* <Slider speed={300} slidesToShow={1} slidesToScroll={1} infinite={false} draggable={true}> */}
-    <div data-src="http://i.imgur.com/kJXRAZH.jpg" />
-    <div data-src="http://i.imgur.com/TaA1gj9.png" />
+    <div data-src="" />
+    <div data-src="" />
     {/* <div data-src="/path/to/image-2.jpg" /> */}
     {/* </Slider>  */}
     </AwesomeSlider>

@@ -3,7 +3,8 @@ const Sequelize = require("sequelize");
 const sequelize = new Sequelize("GoMarket", "root", "1111", {
 
     host: "localhost",
-    dialect: "mysql"
+    dialect: "mysql",
+    logging: false
   });
 
 sequelize.authenticate()
@@ -19,6 +20,7 @@ sequelize.authenticate()
     password: { type: Sequelize.STRING, required: true },
     location: { type: Sequelize.STRING },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true },
+    created: {type: Sequelize.DATE, defaultValue: Sequelize.NOW  }
  })
 
  const Employee = sequelize.define('employee', {
