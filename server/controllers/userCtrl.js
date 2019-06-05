@@ -1,15 +1,15 @@
 const bcrypt = require('bcrypt');
-const db = require('../../database/db');
+const { User, Employee } = require('../../database/db');
 
-exports.createUsers = function(req, res){
+exports.createUser = function(req, res){
 	// const password = req.body.password;
 	// const hashedPass = bcrypt.hashSync(password, 10);
 
-	db.User.createUser({
+	User.create({
 		email: req.body.email,
 		username: req.body.username,
 		password: req.body.password,
-		phoneNumber: req.body.phoneNumber,
+		phoneNumber: req.body.phoneNumber
 	}).then(user => {
 		return res.send(user);
 		}).catch(err => {
@@ -18,7 +18,8 @@ exports.createUsers = function(req, res){
 }
 
 exports.getUser = function(req, res){
-	db.User.findOne({ where: { 
+	const statusCode = 401;
+	User.findOne({ where: { 
 		email: req.body.email,
 		password: req.body.password,
 	}}).then(user => {
@@ -28,26 +29,31 @@ exports.getUser = function(req, res){
 			res.send('User does not exist')
 		}
 	}).catch(err => {
-		res.send('Error: ', err)
+		res.status(statusCode).send('Error: ', err)
 	})
 }
 
 exports.createEmployee = function(req, res){
     // const password = req.body.password;
     // const hashedPass = bcrypt.hashSync(password, 10);
+	const statusCode = 401;
 
-    db.Employee.create({
+    Employee.create({
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         // imgUrl: req.body.imgUrl,
         // cv: req.body.cv
-    })
+    }).then(employee => {
+		return res.send(employee);
+	}).catch(err => {
+		res.status(statusCode).send('Error: ', err)
+	})
 }
 
 exports.getEmployee = function(req, res){
-	db.User.findOne({ where: { 
+	User.findOne({ where: { 
 		email: req.body.email,
 		password: req.body.password,
 	}}).then(user => {
