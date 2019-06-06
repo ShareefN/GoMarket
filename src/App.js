@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.png'
+import logo from './logo.png';
+import Login from './components/loginForm';
+import Register from './components/registerForm';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +17,11 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import AwesomeSlider from 'react-awesome-slider';
 // import AwsSliderStyles from 'react-awesome-slider/src/styles.scss';
+
+mobiscroll.settings = {
+  lang: 'ar',
+  theme: 'ios'
+};
 
 const StyledBadge = withStyles((theme) => ({
   badge: {

@@ -2,13 +2,13 @@ const bcrypt = require('bcrypt');
 const { User, Employee } = require('../../database/db');
 
 exports.createUser = function(req, res){
-	// const password = req.body.password;
-	// const hashedPass = bcrypt.hashSync(password, 10);
+	const password = req.body.password;
+	let hashedPass = bcrypt.hashSync(password, 10);
 
 	User.create({
 		email: req.body.email,
 		username: req.body.username,
-		password: req.body.password,
+		password: hashedPass,
 		phoneNumber: req.body.phoneNumber
 	}).then(user => {
 		return res.send(user);
@@ -19,7 +19,7 @@ exports.createUser = function(req, res){
 
 exports.getUser = function(req, res){
 	const statusCode = 401;
-	User.findOne({ where: { 
+	User.findAll({ where: { 
 		email: req.body.email,
 		password: req.body.password,
 	}}).then(user => {
@@ -53,7 +53,7 @@ exports.createEmployee = function(req, res){
 }
 
 exports.getEmployee = function(req, res){
-	User.findOne({ where: { 
+	User.findAll({ where: { 
 		email: req.body.email,
 		password: req.body.password,
 	}}).then(user => {
@@ -63,7 +63,7 @@ exports.getEmployee = function(req, res){
 			res.send('User does not exist')
 		}
 	}).catch(err => {
-		res.send('Error: ', err)
+		res.status(401).send('Error: ', err)
 	})
 }
 
