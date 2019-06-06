@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Login from './loginForm';
 import logo from '../logo.png';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';  
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
+import Button from '@material-ui/core/Button';
 import { withStyles, Theme } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -28,8 +29,18 @@ class NavBar extends Component{
     constructor(props){
         super(props)
         this.state = {
-            visible: false
+            modalIsOpen: false
         }
+    }
+
+    onSubmit(){
+        alert('hi')
+    }
+
+    toggelModal(){
+        this.setState({
+            modalIsOpen: ! this.state.modalIsOpen
+        })
     }
 
     classes(theme) {
@@ -60,8 +71,23 @@ class NavBar extends Component{
       {/* <h3>Cash-On-Delivery | Same-Day-Delivery</h3> */}
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "80%", position: 'absolute'}}>
-      <Login/>
-      <Button color="inherit">Login</Button>
+      <Button color="inherit" onClick={this.toggelModal.bind(this)}>Login</Button>
+      <Modal isOpen={this.state.modalIsOpen}>
+        <ModalHeader toggel={this.toggelModal.bind(this)}>Login</ModalHeader>
+        <ModalBody>
+            <label>
+                <input type="text" name="email" placeholder="Email" />
+            </label>
+            <label>
+                <input type="paaword" name="password" placeholder="Password" />
+            </label>
+        </ModalBody>
+        <ModalFooter>
+            <Button>LogIn</Button>
+            <Button>Register</Button>
+            <Button onClick={this.toggelModal.bind(this)}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
       <Button color="inherit">Register</Button>
     <IconButton aria-label="Cart" color="inherit">
     <StyledBadge badgeContent={4} color="primary">
