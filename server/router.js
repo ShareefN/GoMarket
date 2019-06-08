@@ -14,7 +14,7 @@ router.route('/emplyeeSignUp').post((req, res) => {
 	userCtrl.createEmployee(req, res);
 })
 
-router.route('/emplyeeLogin').get((req, res) => {
+router.route('/emplyeeLogin').post((req, res) => {
 	userCtrl.getEmployee(req, res);
 })
 

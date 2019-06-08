@@ -70,6 +70,7 @@ class App extends Component{
     return(
       <div className={this.classes.root}>
      <NavBar />
+     {/* <h3>Cash-On-Delivery | Same-Day-Delivery</h3>  */}
     <h2>Special Offers</h2>
     <Wrapper>
     <AwesomeSlider style={{width: '5%', height: '5%'}}>

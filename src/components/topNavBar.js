@@ -32,11 +32,7 @@ class NavBar extends Component{
             modalIsOpen: false
         }
     }
-
-    onSubmit(){
-        alert('hi')
-    }
-
+    
     toggelModal(){
         this.setState({
             modalIsOpen: ! this.state.modalIsOpen

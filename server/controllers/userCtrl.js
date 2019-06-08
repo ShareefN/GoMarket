@@ -34,28 +34,27 @@ exports.getUser = function(req, res){
 }
 
 exports.createEmployee = function(req, res){
-    // const password = req.body.password;
-    // const hashedPass = bcrypt.hashSync(password, 10);
+    const password = req.body.password;
+    const hashedPass = bcrypt.hashSync(password, 10);
 	const statusCode = 401;
 
     Employee.create({
         email: req.body.email,
         username: req.body.username,
-        password: req.body.password,
+        password: hashedPass,
         phoneNumber: req.body.phoneNumber,
         // imgUrl: req.body.imgUrl,
         // cv: req.body.cv
     }).then(employee => {
 		return res.send(employee);
 	}).catch(err => {
-		res.status(statusCode).send('Error: ', err)
+		res.status(statusCode).send(err)
 	})
 }
 
 exports.getEmployee = function(req, res){
 	User.findAll({ where: { 
 		email: req.body.email,
-		password: req.body.password,
 	}}).then(user => {
 		if(bcrypt.compareSync(req.body.password, user.password)){
 			res.send(user)
@@ -63,7 +62,7 @@ exports.getEmployee = function(req, res){
 			res.send('User does not exist')
 		}
 	}).catch(err => {
-		res.status(401).send('Error: ', err)
+		res.status(401).send(err)
 	})
 }
 
