@@ -21,9 +21,15 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-
+      login: false
     }
   }    
+
+  onSubmit = () => {
+    this.setState({
+      login: ! this.state.login
+    })
+  }
 
   classes(theme) {
     return{
@@ -36,11 +42,14 @@ class App extends Component{
     return(
       <div>
         <Router>
+          {/* <Route exact/> */}
           <Route exact path="/loginForm" render={(props) => <Login />} />
           <Route exact path="registerForm" render={(props) => <Register />}/>
         </Router>
-     <NavBar />
-     {/* <h3>Cash-On-Delivery | Same-Day-Delivery</h3>  */}
+     <NavBar onSubmit={this.onSubmit}/>
+     {this.state.login ? <Login login={this.state.login} /> : <div></div>}
+     
+    {/* create components for each tag
     <h2>Special Offers</h2>
     <Wrapper>
     <AwesomeSlider style={{width: '5%', height: '5%'}}>
@@ -49,7 +58,7 @@ class App extends Component{
     </AwesomeSlider>
     </Wrapper>
     <h2>Hot Deals</h2>
-    <h2>New Arrivals</h2>
+    <h2>New Arrivals</h2> */}
     </div>
     )
   }

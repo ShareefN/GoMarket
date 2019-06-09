@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Login from './loginForm';
-import Register from './registerForm'
+import Register from "./registerForm"
 import logo from '../logo.png';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';  
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -56,32 +54,8 @@ class NavBar extends Component{
       {/* <h3>Cash-On-Delivery | Same-Day-Delivery</h3> */}
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
-      <Button color="inherit" onClick={this.toggelModal}>LogIn</Button>
-      <Login />
-      {/* <Modal isOpen={this.state.modalIsOpen}>
-        <ModalHeader toggel={this.toggelModal.bind(this)}>
-        <img src={logo} style={{width:"50px",height:"100px"}} alt="logo" />
-        </ModalHeader>
-        <ModalBody>
-          <label>
-            <input type="text" name="email" placeholder="Email"/>
-          </label>
-          <label>
-            <input type="text" name="username" placeholder="Username"/>
-          </label>
-          <label>
-            <input type="password" name="password" placeholder="Password"/>
-          </label>
-          <label>
-            <input type="integer" name="phoneNumber" placeholder="Mobile Number"/>
-          </label>
-        </ModalBody>
-        <ModalFooter>
-            <Button>SignIn</Button>{' '}
-            <Button onClick={this.toggelModal.bind(this)}>Cancel</Button>
-        </ModalFooter>
-      </Modal> */}
-      <Button color="inherit">SignUp/Register</Button>
+      <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
+      <Button color="inherit" onClick={() => {this.props.onSubmit()}}>SignUp/Register</Button>
     <IconButton aria-label="Cart" color="inherit">
     <StyledBadge badgeContent={4} color="primary">
     <ShoppingCartIcon />
