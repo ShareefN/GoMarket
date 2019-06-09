@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Login from './loginForm';
 import logo from '../logo.png';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';  
 import AppBar from '@material-ui/core/AppBar';
@@ -75,12 +74,11 @@ class NavBar extends Component{
                 <input type="text" name="email" placeholder="Email" />
             </label>
             <label>
-                <input type="paaword" name="password" placeholder="Password" />
+                <input type="password" name="password" placeholder="Password" />
             </label>
         </ModalBody>
         <ModalFooter>
             <Button>LogIn</Button>
-            <Button>Register</Button>
             <Button onClick={this.toggelModal.bind(this)}>Cancel</Button>
         </ModalFooter>
       </Modal>
