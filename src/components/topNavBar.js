@@ -54,7 +54,7 @@ class NavBar extends Component{
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
-      <Button color="inherit" onClick={() => {this.props.onSubmitsignup()}}>SignUp/Register</Button>
+      <Button color="inherit" onClick={() => {this.props.onSubmitSignup()}}>SignUp/Register</Button>
     <IconButton aria-label="Cart" color="inherit">
     <StyledBadge badgeContent={4} color="primary">
     <ShoppingCartIcon />

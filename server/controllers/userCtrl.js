@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { User, Employee } = require('../../database/db');
 
 exports.createUser = function(req, res){
@@ -29,7 +30,17 @@ exports.getUser = function(req, res){
 		email: req.body.email,
 	}}).then(user => {
 		if(bcrypt.compareSync(req.body.password, user[0].password)){
-			res.send(user[0])
+			const token = jwt.sign({
+				email: user[0].email,
+				userId: user[0]._id
+			}, 
+				process.env.JWT_KEY,
+			{
+				expiresIn: '6h'
+			})
+			res.status(200).json({
+				token
+			})
 		}else{
 			res.send('User does not exist')
 		}
@@ -41,7 +52,6 @@ exports.getUser = function(req, res){
 exports.createEmployee = function(req, res){
     const password = req.body.password;
     const hashedPass = bcrypt.hashSync(password, 10);
-	const statusCode = 401;
 
 	Employee.findAll({ where : {
 		email: req.body.email,
@@ -59,7 +69,7 @@ exports.createEmployee = function(req, res){
     }).then(employee => {
 		return res.send(employee);
 	}).catch(err => {
-		res.status(statusCode).send(err)
+		res.status(401).send(err)
 	})
 }
 
