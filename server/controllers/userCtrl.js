@@ -3,7 +3,13 @@ const { User, Employee } = require('../../database/db');
 
 exports.createUser = function(req, res){
 	const password = req.body.password;
-	let hashedPass = bcrypt.hashSync(password, 10);
+	const hashedPass = bcrypt.hashSync(password, 10);
+
+	User.findAll({ where: {
+		email: req.body.email,
+	}}).then(user => {
+		res.send('User already exist')
+	})
 
 	User.create({
 		email: req.body.email,
@@ -13,7 +19,7 @@ exports.createUser = function(req, res){
 	}).then(user => {
 		return res.send(user);
 		}).catch(err => {
-			console.log('Error: ', err)
+			console.log(err)
 		})
 }
 
@@ -21,15 +27,14 @@ exports.getUser = function(req, res){
 	const statusCode = 401;
 	User.findAll({ where: { 
 		email: req.body.email,
-		password: req.body.password,
 	}}).then(user => {
-		if(bcrypt.compareSync(req.body.password, user.password)){
-			res.send(user)
+		if(bcrypt.compareSync(req.body.password, user[0].password)){
+			res.send(user[0])
 		}else{
 			res.send('User does not exist')
 		}
 	}).catch(err => {
-		res.status(statusCode).send('Error: ', err)
+		res.status(statusCode).send(err)
 	})
 }
 
@@ -37,6 +42,12 @@ exports.createEmployee = function(req, res){
     const password = req.body.password;
     const hashedPass = bcrypt.hashSync(password, 10);
 	const statusCode = 401;
+
+	Employee.findAll({ where : {
+		email: req.body.email,
+	}}).then(user => {
+		res.send('User already exist')
+	})
 
     Employee.create({
         email: req.body.email,
@@ -53,11 +64,11 @@ exports.createEmployee = function(req, res){
 }
 
 exports.getEmployee = function(req, res){
-	User.findAll({ where: { 
+	Employee.findAll({ where: { 
 		email: req.body.email,
 	}}).then(user => {
-		if(bcrypt.compareSync(req.body.password, user.password)){
-			res.send(user)
+		if(bcrypt.compareSync(req.body.password, user[0].password)){
+			res.send(user[0])
 		}else{
 			res.send('User does not exist')
 		}

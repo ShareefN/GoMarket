@@ -18,9 +18,8 @@ sequelize.authenticate()
     email: { type: Sequelize.STRING, required: true, unique: true },
     username: { type: Sequelize.STRING, required: true, unique: true },
     password: { type: Sequelize.STRING, required: true },
-    location: { type: Sequelize.STRING },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true },
-    created: {type: Sequelize.DATE, defaultValue: Sequelize.NOW  }
+    created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW  }
  })
 
  const Employee = sequelize.define('employee', {
@@ -29,9 +28,10 @@ sequelize.authenticate()
     username: { type: Sequelize.STRING, required: true, unique: true },
     password: { type: Sequelize.STRING, required: true },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true },
-    // imgUrl: { type: Sequelize.STRING },
-		// rating: { type: Sequelize.INTEGER },
-		// cv: { type: Sequelize.STRING }
+    imgUrl: { type: Sequelize.STRING },
+		rating: { type: Sequelize.INTEGER, required: false },
+    cv: { type: Sequelize.STRING, required: true },
+    created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
  })
 
  Employee.hasMany(User);
