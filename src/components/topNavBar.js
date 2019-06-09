@@ -50,12 +50,11 @@ class NavBar extends Component{
     <AppBar position="static">
     <Toolbar>
       <Typography>
-      <img src={logo} style={{width:"200px",height:"100px", paddingRight:"25%"}} href = "#" alt="logo" />
-      {/* <h3>Cash-On-Delivery | Same-Day-Delivery</h3> */}
+      <img src={logo} style={{width:"200px",height:"100px", paddingRight:"25%"}} alt="logo" />
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
-      <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
-      <Button color="inherit" onClick={() => {this.props.onSubmit()}}>SignUp/Register</Button>
+      <Button color="inherit" onClick={() => {this.props.onSubmit(1)}}>LogIn</Button>
+      <Button color="inherit" onClick={() => {this.props.onSubmit(2)}}>SignUp/Register</Button>
     <IconButton aria-label="Cart" color="inherit">
     <StyledBadge badgeContent={4} color="primary">
     <ShoppingCartIcon />

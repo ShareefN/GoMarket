@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../logo.png';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; 
+import { Modal, ModalHeader, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -57,7 +57,7 @@ class Login extends Component{
 				alignItems: 'center',
 			},
 			form: {
-				width: '100%', // Fix IE 11 issue.
+				width: '100%', 
 				marginTop: theme.spacing(1),
 			},
 			submit: {
@@ -71,7 +71,7 @@ render(){
 			<div>
 			<Modal isOpen={this.state.modalIsOpen} style={{textAlign: "center"}}>
 			<ModalHeader toggel={this.toggelModal}>
-			<img src={logo} style={{width:"15%", height: "15%"}} alt="logo" /> 
+			<img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> 
 			</ModalHeader>
 			<Container component="main" maxWidth="xs">
 		<CssBaseline />
@@ -94,6 +94,7 @@ render(){
 					required
 					fullWidth
 					onChange={this.handelInputChange}
+					type="password"
 					name="password"
 					label="Password"
 					type="password"

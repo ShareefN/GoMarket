@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.png';
+import logo from '../logo.png';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
@@ -41,6 +41,12 @@ handleInputChange(event){
     })
 }
 
+componentWillMount(){
+	this.setState({
+		modalIsOpen: this.props.register
+	})
+}
+
 toggelModal(){
 	this.setState({
     modalIsOpen: ! this.state.modalIsOpen
@@ -74,14 +80,14 @@ render(){
 	return(
 		<div>
 		<Modal isOpen={this.state.modalIsOpen}>
-		<ModalHeader toggel={this.toggelModal}>
-			{/* logo img here */}
+		<ModalHeader toggel={this.toggelModal} style={{textAlign: "center"}}>
+		<img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/>
 		</ModalHeader>
 		<Container component="main" maxWidth="xs">
 	<CssBaseline />
 	<div className={this.classes.paper}>
 		<Typography component="h1" variant="h5">
-			SignUp/Register
+			SignUp / Register
 		</Typography>
 		<form className={this.classes.form} noValidate>
 			<TextField
@@ -107,6 +113,7 @@ render(){
 				required
 				fullWidth
 				onChange={this.handelInputChange}
+				type="password"
 				name="password"
 				label="Password"
 				type="password"
@@ -141,7 +148,7 @@ render(){
 				<Grid item xs>
 				</Grid>
 				<Grid item>
-					<Link href="#" variant="body2">
+					<Link href="/loginForm" variant="body2">
 						{"Don't have an account? Sign Up"}
 					</Link>
 				</Grid>
