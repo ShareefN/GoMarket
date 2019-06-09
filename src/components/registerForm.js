@@ -106,7 +106,6 @@ render(){
 				onChange={this.handelInputChange}
 				label="Username"
 				name="username"
-				placeholder="Username"
 				autoFocus
 			/>
 			<TextField
@@ -117,7 +116,6 @@ render(){
 				name="password"
 				label="Password"
 				type="password"
-				placeholder="Password"
 				id="password"
 				autoComplete="current-password"
 			/>
@@ -141,19 +139,8 @@ render(){
 				color="primary"
 				className={this.classes.submit}
 			>
-				LogIn
+				Signup
 			</Button>
-			<ModalFooter>
-			<Grid container>
-				<Grid item xs>
-				</Grid>
-				<Grid item>
-					<Link href="/loginForm" variant="body2">
-						{"Don't have an account? Sign Up"}
-					</Link>
-				</Grid>
-			</Grid>
-			</ModalFooter>
 		</form>
 	</div>
 	<Box mt={5}>

@@ -26,10 +26,16 @@ class App extends Component{
     }
   }    
 
-  onSubmit = (btnNum) => {
+  onSubmit = () => {
     this.setState({
       login: ! this.state.login,
+      register: false
+    })
+  }
+  onSubmitsignup = () => {
+    this.setState({
       register: ! this.state.register,
+      login: false
     })
   }
 
@@ -48,9 +54,9 @@ class App extends Component{
           <Route exact path="/loginForm" render={(props) => <Login />} />
           <Route exact path="registerForm" render={(props) => <Register />}/> */}
         </Router>
-     <NavBar onSubmit={this.onSubmit}/>
+     <NavBar onSubmit={this.onSubmit} onSubmitsignup={this.onSubmitsignup}/>
      {this.state.login ? <Login login={this.state.login} /> : <div></div>}
-     {this.state.register ? <Register register={this.state.register}/> : <div></div>}
+     {this.state.register ? <Register register={this.state.register} /> : <div></div>}
     {/* create components for each tag
     <h2>Special Offers</h2>
     <Wrapper>

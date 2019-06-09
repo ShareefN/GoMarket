@@ -86,7 +86,6 @@ render(){
 					onChange={this.handelInputChange}
 					label="Email"
 					name="email"
-					placeholder="Email"
 					autoComplete="email"
 					autoFocus
 				/>
@@ -98,7 +97,6 @@ render(){
 					name="password"
 					label="Password"
 					type="password"
-					placeholder="Password"
 					autoComplete="current-password"
 				/>
 				<FormControlLabel
