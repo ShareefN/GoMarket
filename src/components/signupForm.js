@@ -93,7 +93,7 @@ render(){
 			User SignUp / Employee Register
 		</Typography>
 		<Switch
-        checked={this.checkedB}
+        checked={this.state.checkedB}
         onChange={this.toggelSwitch}
         value="checkedB"
         color="primary"

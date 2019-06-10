@@ -15,7 +15,7 @@ class Register extends Component{
         super(props);
         this.state = {
 						modalIsOpen: false,
-						CheckB: false,
+						CheckedB: false,
             email: '',
             username: '',
             password: '',
@@ -23,7 +23,10 @@ class Register extends Component{
             imgUrl: '',
             cv: '',
             message: ''
-        }
+				}
+				this.handelInputChange = this.handelInputChange.bind(this);
+				this.toggalModal = this.toggalModal.bind(this);
+				this.toggelSwitch = this.toggelSwitch.bind(this);
     }    
 
     handelInputChange(event){
@@ -51,7 +54,7 @@ class Register extends Component{
 		
 		toggelSwitch(event){
 			this.setState({
-				checkedB: event.target.checked
+				checkedB: event.target.checked,
 			})
 		}
 

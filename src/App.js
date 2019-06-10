@@ -41,7 +41,7 @@ class App extends Component{
         <Router>
           {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
         </Router>
-     <NavBar onSubmit={this.onSubmit} onSubmitSignup={this.onSubmitSignup}/>
+     <NavBar onSubmit={this.onSubmit} onSubmitSignup={this.onSubmitSignup} toggelForms={this.toggelForms}/>
      {this.state.login ? <Login login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
      {this.state.register ? <Register register={this.state.register}/> : null}
