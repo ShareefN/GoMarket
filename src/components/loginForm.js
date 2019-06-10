@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../logo.png';
-import { Modal, ModalHeader, ModalFooter } from 'reactstrap'; 
+import { Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class Login extends Component{
 	constructor(props){
@@ -69,16 +73,17 @@ class Login extends Component{
 render(){
 		return(
 			<div>
-			<Modal isOpen={this.state.modalIsOpen} style={{textAlign: "center"}}>
+			<Modal isOpen={this.state.modalIsOpen} toggel={this.toggelModal}>
 			<ModalHeader toggel={this.toggelModal}>
-			<img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> 
 			</ModalHeader>
+			<ModalBody>
 			<Container component="main" maxWidth="xs">
 		<CssBaseline />
 		<div className={this.classes.paper}>
 			<Typography component="h1" variant="h5">
 				LogIn
 			</Typography>
+			<Dialog>
 			<form className={this.classes.form} noValidate>
 				<TextField
 					required
@@ -117,17 +122,19 @@ render(){
 					<Grid item xs>
 					</Grid>
 					<Grid item>
-						<Link href="#" variant="body2">
+						<Link href="/sign" variant="body2">
 							{"Don't have an account? Sign Up"}
 						</Link>
 					</Grid>
 				</Grid>
 				</ModalFooter>
 			</form>
+			</Dialog>
 		</div>
 		<Box mt={5}>
 		</Box>
 	</Container>
+	</ModalBody>
 	</Modal>
 	</div>
 			)

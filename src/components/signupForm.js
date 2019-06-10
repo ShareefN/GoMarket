@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import logo from '../logo.png';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
+import Switch from '@material-ui/core/Switch';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-class Register extends Component {
+class Signup extends Component {
    constructor(props){
        super(props)
        this.state = {
-        modalIsOpen: false,
+		modalIsOpen: false,
+		checkedB: true,
         email: '',
         password: '',
         username: '',
@@ -26,8 +24,9 @@ class Register extends Component {
         imgUrl: '',
         cv: '',
        }
-			 this.handleInputChange = this.handleInputChange.bind(this);
-			 this.toggelModal = this.toggelModal.bind(this)
+		 this.handleInputChange = this.handleInputChange.bind(this);
+		 this.toggelModal = this.toggelModal.bind(this);
+		 this.toggelSwitch = this.toggelSwitch.bind(this);
    }
 
 handleInputChange(event){
@@ -43,7 +42,7 @@ handleInputChange(event){
 
 componentWillMount(){
 	this.setState({
-		modalIsOpen: this.props.register
+		modalIsOpen: this.props.signup
 	})
 }
 
@@ -51,6 +50,12 @@ toggelModal(){
 	this.setState({
     modalIsOpen: ! this.state.modalIsOpen
  })
+}
+
+toggelSwitch(event){
+	this.setState({
+		checkedB: event.target.checked
+	})
 }
 
 classes(theme){
@@ -81,14 +86,20 @@ render(){
 		<div>
 		<Modal isOpen={this.state.modalIsOpen}>
 		<ModalHeader toggel={this.toggelModal} style={{textAlign: "center"}}>
-		<img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/>
+		{/* <img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> */}
 		</ModalHeader>
 		<Container component="main" maxWidth="xs">
 	<CssBaseline />
 	<div className={this.classes.paper}>
 		<Typography component="h1" variant="h5">
-			SignUp / Register
+			User SignUp / Employee Register
 		</Typography>
+		<Switch
+        checked={this.checkedB}
+        onChange={this.toggelSwitch}
+        value="checkedB"
+        color="primary"
+      />
 		<form className={this.classes.form} noValidate>
 			<TextField
 				required
@@ -152,4 +163,4 @@ render(){
 }
 }
 
-export default Register;
+export default Signup;

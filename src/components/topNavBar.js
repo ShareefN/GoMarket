@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import Register from "./registerForm"
-import logo from '../logo.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
-import { withStyles, Theme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tab from '@material-ui/core/Tab';
 import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -28,8 +32,21 @@ class NavBar extends Component{
     constructor(props){
         super(props)
         this.state = {
-            modalIsOpen: false
+          modalIsOpen: false
         }
+        this.toggelModal = this.toggelModal.bind(this)
+    }
+
+    // logOut(){
+    //   this.setState({
+    //     storage: window.localStorage.removeItem("user");
+    //   })
+    // }
+
+    toggelModal(){
+      this.setState({
+        modalIsOpen: ! this.state.modalIsOpen
+      })
     }
 
     classes(theme) {
@@ -49,8 +66,8 @@ class NavBar extends Component{
     <div style={{marginBottom: '3%'}}>
     <AppBar position="static">
     <Toolbar>
-      <Typography>
-      <img src={logo} style={{width:"200px",height:"100px", paddingRight:"25%"}} alt="logo" />
+      <Typography href="/" style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
+        GoMarket
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
