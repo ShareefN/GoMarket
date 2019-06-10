@@ -9,7 +9,7 @@ exports.createUser = function(req, res){
 	User.findAll({ where: {
 		email: req.body.email,
 	}}).then(user => {
-		res.send('User already exist')
+		res.send(user)
 	})
 
 	User.create({
@@ -20,70 +20,66 @@ exports.createUser = function(req, res){
 	}).then(user => {
 		return res.send(user);
 		}).catch(err => {
-			console.log(err)
+			res.status(401).send(err)
 		})
 }
 
 exports.getUser = function(req, res){
-	const statusCode = 401;
-	User.findAll({ where: { 
+	User.findOne({ where: { 
 		email: req.body.email,
 	}}).then(user => {
-		if(bcrypt.compareSync(req.body.password, user[0].password)){
-			const token = jwt.sign({
-				email: user[0].email,
-				userId: user[0]._id
-			}, 
-				process.env.JWT_KEY,
-			{
-				expiresIn: '6h'
-			})
-			res.status(200).json({
-				token
-			})
-		}else{
-			res.send('User does not exist')
-		}
-	}).catch(err => {
-		res.status(statusCode).send(err)
-	})
-}
+		// console.log(user)
+		bcrypt.compare(req.body.password, user.password).then(function(isMatching){
+			if(isMatching){
+					const token = jwt.sign({
+						email: user.email,
+						userId: user.id
+					}, "JWT_KEY", {expiresIn: 4000});
+					return res.send({token: token});
+			} else {
+					return res.status(401).send({error: 'Wrong password'});
+			}
+	});
+});
+};
 
 exports.createEmployee = function(req, res){
-    const password = req.body.password;
-    const hashedPass = bcrypt.hashSync(password, 10);
+	const password = req.body.password;
+	const hashedPass = bcrypt.hashSync(password, 10);
 
-	Employee.findAll({ where : {
+	Employee.findAll({ where: {
 		email: req.body.email,
-	}}).then(user => {
-		res.send('User already exist')
+	}}).then(employee => {
+		res.send(employee)
 	})
 
-    Employee.create({
-        email: req.body.email,
-        username: req.body.username,
-        password: hashedPass,
-        phoneNumber: req.body.phoneNumber,
-        // imgUrl: req.body.imgUrl,
-        // cv: req.body.cv
-    }).then(employee => {
+	Employee.create({
+		email: req.body.email,
+		username: req.body.username,
+		password: hashedPass,
+		phoneNumber: req.body.phoneNumber
+	}).then(employee => {
 		return res.send(employee);
-	}).catch(err => {
-		res.status(401).send(err)
-	})
+		}).catch(err => {
+			res.status(401).send(err)
+		})
 }
 
 exports.getEmployee = function(req, res){
-	Employee.findAll({ where: { 
+	Employee.findOne({ where: { 
 		email: req.body.email,
-	}}).then(user => {
-		if(bcrypt.compareSync(req.body.password, user[0].password)){
-			res.send(user[0])
-		}else{
-			res.send('User does not exist')
-		}
-	}).catch(err => {
-		res.status(401).send(err)
-	})
+	}}).then(employee => {
+		bcrypt.compare(req.body.password, employee.password).then(function(isMatching){
+			if(isMatching){
+					const token = jwt.sign({
+						email: employee.email,
+						employeeId: employee.id
+					}, "JWT_KEY", {expiresIn: 4000});
+					return res.send({token: token});
+			} else {
+					return res.status(HTTP_UNAUTHORIZED).send({error: 'Wrong password'});
+			}
+	});
+});
 }
 
