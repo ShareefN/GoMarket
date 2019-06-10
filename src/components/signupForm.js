@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.png';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
@@ -86,7 +85,6 @@ render(){
 		<div>
 		<Modal isOpen={this.state.modalIsOpen}>
 		<ModalHeader toggel={this.toggelModal} style={{textAlign: "center"}}>
-		{/* <img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> */}
 		</ModalHeader>
 		<Container component="main" maxWidth="xs">
 	<CssBaseline />

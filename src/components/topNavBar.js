@@ -10,12 +10,6 @@ import Tabs from '@material-ui/core/Tabs';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Tab from '@material-ui/core/Tab';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -43,7 +37,7 @@ class NavBar extends Component{
     //   })
     // }
 
-    toggelModal(){
+  toggelModal(){
       this.setState({
         modalIsOpen: ! this.state.modalIsOpen
       })
@@ -84,8 +78,7 @@ class NavBar extends Component{
   <Tabs
     indicatorColor="primary"
     textColor="primary"
-    centered
-  >      
+    centered >      
     <Tab label="Groceries" />
     <Tab label="Elctronics" />
     <Tab label="Household Appliences"/>
