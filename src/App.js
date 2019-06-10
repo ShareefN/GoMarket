@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Login from './components/loginForm';
 import Signup from './components/signupForm';
 import NavBar from './components/topNavBar';
+import Register from './components/register';
 
 class App extends Component{
   constructor(props){
@@ -37,9 +38,7 @@ class App extends Component{
     return(
       <div>
         <Router>
-          {/* <Route exact/> 
-          <Route exact path="/loginForm" render={(props) => <Login />} />
-          <Route exact path="registerForm" render={(props) => <Register />}/> */}
+          {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
         </Router>
      <NavBar onSubmit={this.onSubmit} onSubmitSignup={this.onSubmitSignup}/>
      {this.state.login ? <Login login={this.state.login} /> : <div></div>}

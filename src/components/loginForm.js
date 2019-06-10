@@ -83,7 +83,6 @@ render(){
 			<Typography component="h1" variant="h5">
 				LogIn
 			</Typography>
-			<Dialog>
 			<form className={this.classes.form} noValidate>
 				<TextField
 					required
@@ -129,7 +128,6 @@ render(){
 				</Grid>
 				</ModalFooter>
 			</form>
-			</Dialog>
 		</div>
 		<Box mt={5}>
 		</Box>
