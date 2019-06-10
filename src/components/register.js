@@ -37,6 +37,12 @@ class Register extends Component{
         })
     }
 
+		componentWillMount(){
+			this.setState({
+				modalIsOpen: this.props.register
+			})
+		}
+
     toggalModal(){
         this.setState({
             modalIsOpen: ! this.state.modalIsOpen
@@ -63,7 +69,7 @@ class Register extends Component{
 					alignItems: 'center',
 				},
 				form: {
-					width: '100%', // Fix IE 11 issue.
+					width: '100%', 
 					marginTop: theme.spacing(1),
 				},
 				submit: {
@@ -74,8 +80,8 @@ class Register extends Component{
 
     render(){
         return(
-            <div>
-                <Modal isOpen={this.state.modalIsOpen}>
+<div>
+    <Modal isOpen={this.state.modalIsOpen}>
 		<ModalHeader toggel={this.toggelModal} style={{textAlign: "center"}}>
 		{/* <img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> */}
 		</ModalHeader>
@@ -169,7 +175,7 @@ class Register extends Component{
 	</Box>
 </Container>
 </Modal>
-            </div>
+</div>
         )
     }
 }

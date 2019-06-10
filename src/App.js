@@ -10,7 +10,8 @@ class App extends Component{
     super(props);
     this.state = {
       login: false,
-      signup: false
+      signup: false,
+      register: false
     }
   }    
 
@@ -27,13 +28,13 @@ class App extends Component{
     })
   }
 
-  classes(theme) {
-    return{
-    root: {
-      flexGrow: 1,
-    },
+  toggelForms = () => {
+    this.setState({
+      signup: this.state.signup,
+      register: ! this.state.register
+    })
   }
-}
+
   render(){
     return(
       <div>
@@ -41,8 +42,9 @@ class App extends Component{
           {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
         </Router>
      <NavBar onSubmit={this.onSubmit} onSubmitSignup={this.onSubmitSignup}/>
-     {this.state.login ? <Login login={this.state.login} /> : <div></div>}
-     {this.state.signup ? <Signup signup={this.state.signup} /> : <div></div>}
+     {this.state.login ? <Login login={this.state.login} /> : null}
+     {this.state.signup ? <Signup signup={this.state.signup} /> : null}
+     {this.state.register ? <Register register={this.state.register}/> : null}
     </div>
     )
   }
