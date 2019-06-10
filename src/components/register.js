@@ -139,6 +139,7 @@ class Register extends Component{
 				placeholder="Mobile Number"
 				autoFocus
 			/>
+			Image
 			<TextField
 				required
 				fullWidth
@@ -149,6 +150,7 @@ class Register extends Component{
 				placeholder="Image"
 				autoFocus
 			/>
+			CV
 			<TextField
 				required
 				fullWidth
