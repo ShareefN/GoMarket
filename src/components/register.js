@@ -30,6 +30,8 @@ class Register extends Component{
 				this.toggelModalClose = this.toggelModalClose.bind(this);
 				this.toggelSwitch = this.toggelSwitch.bind(this);
 				this.userRegister = this.userRegister.bind(this);
+				this.selectedFile = this.selectedFile.bind(this);
+				this.imageUpload = this.imageUpload.bind(this)
     }    
 
     handelInputChange(event){
@@ -94,6 +96,13 @@ class Register extends Component{
 		}
 
 		selectedFile(event){
+			const image = event.target.files[0];
+			this.setState({
+				image
+			})
+		}
+
+		imageUpload(event){
 			const { image } = this.state;
 			const uploadImg = storage.ref(`images/${image.name}`).put(image);
 
@@ -185,6 +194,7 @@ class Register extends Component{
 				label="Image"
 				name="imgUrl"
 				autoFocus
+				onClick={this.imageUpload}
 			/>
 			CV
 			<TextField
