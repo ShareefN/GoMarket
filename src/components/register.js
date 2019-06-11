@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { storage } from '../firebase/index'
 import { ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
@@ -33,12 +34,7 @@ class Register extends Component{
 
     handelInputChange(event){
         this.setState({
-            email: event.target.value,
-            username: event.target.value,
-            password: event.target.value,
-            phoneNumber: event.target.value,
-            imgUrl: event.target.value,
-            CV: event.target.value,
+            [event.target.name]: event.target.value
         })
     }
 
@@ -79,7 +75,6 @@ class Register extends Component{
 				const response = await fetch('/employeeSignUp', {
 					method: 'post',
 					body: JSON.stringify(user),
-					headers: { "Content-Type": "application/json" },
 				});
 				const body = await response.json();
 				if (body.error) {
@@ -96,6 +91,28 @@ class Register extends Component{
 			catch (err) {
 				console.log(err);
 			}
+		}
+
+		selectedFile(event){
+			const { image } = this.state;
+			const uploadImg = storage.ref(`images/${image.name}`).put(image);
+
+			uploadImg.on("state_chaned", snapshot => {},
+			error => {
+				console.log(error);
+			},
+			() => {
+				storage
+				.ref("images")
+				.child(image.name)
+				.getDownloadURL()
+				.then(imgUrl => {
+					this.setState({
+						imgUrl
+					})
+				});
+			}
+			)
 		}
 
 		classes(theme){

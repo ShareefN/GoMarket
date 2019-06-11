@@ -26,9 +26,8 @@ class Login extends Component{
 	}
 
 	handelInputChange(event){
-		this.setState({
-			email: event.target.value,
-			password: event.target.value
+		this.setState({ 
+			[event.target.name]: event.target.value
 		})
 	}
 
@@ -58,7 +57,6 @@ class Login extends Component{
 		fetch('/userLogin', {
 			method: 'GET',
 			body: JSON.stringify(user),
-			headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => response.json())
 		.then((data) => {
 			if(data.error)
