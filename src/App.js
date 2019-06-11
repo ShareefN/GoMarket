@@ -18,14 +18,14 @@ class App extends Component{
   onSubmit = () => {
     this.setState({
       login: ! this.state.login,
-      signup: false
+      signup: this.state.signup
     })
   }
 
   toggelForms = () => {
       this.setState({
         login: this.state.login,
-        signup: ! this.state.login,
+        signup: ! this.state.signup,
         register: this.state.register
       })  
     }

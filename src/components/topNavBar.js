@@ -15,7 +15,6 @@ const StyledBadge = withStyles((theme) => ({
     badge: {
       top: '50%',
       right: -3,
-      // The border color match the background color.-
       border: `2px solid ${
         theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
       }`,
@@ -47,10 +46,6 @@ class NavBar extends Component{
         return{
         root: {
           flexGrow: 1,
-        },
-        paper: {
-          height: 140,
-          width: 100,
         },
       }
     }

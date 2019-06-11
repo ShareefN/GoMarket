@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; 
+import { ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 class Register extends Component{
     constructor(props){
@@ -25,7 +25,8 @@ class Register extends Component{
             message: ''
 				}
 				this.handelInputChange = this.handelInputChange.bind(this);
-				this.toggalModal = this.toggalModal.bind(this);
+				this.toggalModalOpen = this.toggalModalOpen.bind(this);
+				this.toggelModalClose = this.toggelModalClose.bind(this);
 				this.toggelSwitch = this.toggelSwitch.bind(this);
     }    
 
@@ -46,10 +47,16 @@ class Register extends Component{
 			})
 		}
 
-    toggalModal(){
+    toggalModalOpen(){
       this.setState({
          modalIsOpen: ! this.state.modalIsOpen
         })
+		}
+
+		toggelModalClose(){
+			this.setState({
+				modalIsOpen: this.state.modalIsOpen
+			})
 		}
 		
 		toggelSwitch(event){
@@ -60,58 +67,39 @@ class Register extends Component{
 
 		classes(theme){
 			return {
-				'@global': {
-					body: {
-						backgroundColor: theme.palette.common.white,
-					},
-				},
-				paper: {
-					marginTop: theme.spacing(8),
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-				},
 				form: {
 					width: '100%', 
 					marginTop: theme.spacing(1),
 				},
-				submit: {
-					margin: theme.spacing(3, 0, 2),
-				},
 			}
 		}
-
+		
     render(){
         return(
-<div>
-    <Modal isOpen={this.state.modalIsOpen}>
-		<ModalHeader toggel={this.toggelModal} style={{textAlign: "center"}}>
-		{/* <img src={logo} style={{width:"15%", height: "15%"}} alt="logo"/> */}
-		</ModalHeader>
-		<Container component="main" maxWidth="xs">
-	<CssBaseline />
-	<div className={this.classes.paper}>
-		<Typography component="h1" variant="h5">
-			User SignUp / Employee Register
-		</Typography>
-		<Switch
-        checked={this.checkedB}
+					<div>
+				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
+				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
+				<Switch 
+        checked={this.state.checkedB}
         onChange={this.toggelSwitch}
         value="checkedB"
         color="primary"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
       />
-		<form className={this.classes.form} noValidate>
-			<TextField
-				required
-				fullWidth
-				onChange={this.handelInputChange}
-				label="Email"
-				name="email"
-				placeholder="Email"
-				autoComplete="email"
+				<DialogContent>
+				<div className={this.classes.paper}>
+	 		<form className={this.classes.form} noValidate>
+			<ModalBody>
+ 			<TextField
+ 				required
+ 				fullWidth
+ 				onChange={this.handelInputChange}
+ 				label="Email"
+ 				name="email"
+ 				autoComplete="email"
 				autoFocus
-			/>
-			<TextField
+ 			/>
+			 <TextField
 				required
 				fullWidth
 				onChange={this.handelInputChange}
@@ -119,17 +107,16 @@ class Register extends Component{
 				name="username"
 				autoFocus
 			/>
-			<TextField
-				required
-				fullWidth
-				onChange={this.handelInputChange}
-				type="password"
+				<TextField
+ 				required
+ 				fullWidth
+ 				onChange={this.handelInputChange}
+ 				type="password"
 				name="password"
-				label="Password"
-				type="password"
-				id="password"
+			  label="Password"
+ 				type="password"
 				autoComplete="current-password"
-			/>
+			/> 
 			<TextField
 				required
 				fullWidth
@@ -147,7 +134,6 @@ class Register extends Component{
 				type="file"
 				label="Image"
 				name="imgUrl"
-				placeholder="Image"
 				autoFocus
 			/>
 			CV
@@ -158,29 +144,29 @@ class Register extends Component{
 				type="file"
 				label="CV"
 				name="cv"
-				placeholder="CV"
 				autoFocus
 			/>
-			<FormControlLabel
-				control={<Checkbox value="remember" color="primary" />}
-				label="Remember me"
-			/>
-			<Button
+			</ModalBody>
+			</form>
+		</div>
+		<ModalFooter>
+	 			<FormControlLabel
+  				control={<Checkbox value="remember" color="primary" />}
+	 				label="Remember me"
+	 			/>
+	 			<Button
 				type="submit"
 				fullWidth
 				variant="contained"
 				color="primary"
-				className={this.classes.submit}
 			>
-				Apply
+				<Link href="/" style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>
-		</form>
-	</div>
-	<Box mt={5}>
-	</Box>
-</Container>
-</Modal>
-</div>
+				 </ModalFooter>
+				</DialogContent>
+				</Dialog>
+			</div>
+    
         )
     }
 }
