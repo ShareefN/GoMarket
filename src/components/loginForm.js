@@ -56,7 +56,7 @@ class Login extends Component{
 			password: this.state.password
 		}
 		fetch('/userLogin', {
-			method: 'get',
+			method: 'GET',
 			body: JSON.stringify(user),
 			headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 		}).then((response) => response.json())

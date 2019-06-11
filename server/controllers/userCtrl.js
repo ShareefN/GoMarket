@@ -3,25 +3,26 @@ const jwt = require('jsonwebtoken');
 const { User, Employee } = require('../../database/db');
 
 exports.createUser = function(req, res){
-	const password = req.body.password;
-	const hashedPass = bcrypt.hashSync(password, 10);
-
+	// const password = req.body.password;
+	// const hashedPass = bcrypt.hashSync(password, 10);
 	User.findAll({ where: {
 		email: req.body.email,
 	}}).then(user => {
+		if(!user){
+		User.create({
+			email: req.body.email,
+			username: req.body.username,
+			password: req.body.password,
+			phoneNumber: req.body.phoneNumber
+		}).then(user => {
+			return res.send(user);
+			}).catch(err => {
+				res.status(401).send(err)
+			})
+	}else{
 		res.send(user)
-	})
-
-	User.create({
-		email: req.body.email,
-		username: req.body.username,
-		password: hashedPass,
-		phoneNumber: req.body.phoneNumber
-	}).then(user => {
-		return res.send(user);
-		}).catch(err => {
-			res.status(401).send(err)
-		})
+	}
+})
 }
 
 exports.getUser = function(req, res){
@@ -49,20 +50,21 @@ exports.createEmployee = function(req, res){
 	Employee.findAll({ where: {
 		email: req.body.email,
 	}}).then(employee => {
-		res.send(employee)
+		if(!employee){
+			Employee.create({
+				email: req.body.email,
+				username: req.body.username,
+				password: hashedPass,
+				phoneNumber: req.body.phoneNumber
+			}).then(employee => {
+				return res.send(employee);
+				}).catch(err => {
+					res.status(401).send(err)
+				})
+		}else{
+			res.send(user)
+		}
 	})
-
-	Employee.create({
-		email: req.body.email,
-		username: req.body.username,
-		password: hashedPass,
-		phoneNumber: req.body.phoneNumber
-	}).then(employee => {
-		return res.send(employee);
-		}).catch(err => {
-			res.status(401).send(err)
-		})
-}
 
 exports.getEmployee = function(req, res){
 	Employee.findOne({ where: { 
@@ -81,4 +83,4 @@ exports.getEmployee = function(req, res){
 	});
 });
 }
-
+}

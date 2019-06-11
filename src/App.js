@@ -4,6 +4,7 @@ import Login from './components/loginForm';
 import Signup from './components/signupForm';
 import NavBar from './components/topNavBar';
 import Register from './components/register';
+import HotDeals from './components/hotDeals'
 
 class App extends Component{
   constructor(props){
@@ -25,8 +26,8 @@ class App extends Component{
   toggelForms = () => {
       this.setState({
         login: this.state.login,
-        signup: this.state.signup,
-        register: ! this.state.register
+        signup: ! this.state.signup,
+        register: this.state.register
       })  
     }
   
@@ -35,6 +36,7 @@ class App extends Component{
       <div>
         <Router>
           {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
+          {/* <Route exact path="hotDeals" render={(props) => <HotDeals />}/> */}
         </Router>
      <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms}/>
      {this.state.login ? <Login login={this.state.login} /> : null}

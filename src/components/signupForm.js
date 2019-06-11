@@ -31,13 +31,11 @@ class Signup extends Component {
 		 this.signUp = this.signUp.bind(this);
    }
 
-handleInputChange(event){
+	 handleInputChange(event){
     this.setState({
-        email: event.target.value,
-        password: event.target.value,
-        username: event.target.value,
-        phoneNumber: event.target.value,
-    })
+			[event.target.name]: event.target.value
+		})
+		console.log(this.state)
 }
 
 componentWillMount(){
@@ -71,9 +69,8 @@ signUp(){
 		password: this.state.password,
 		phoneNumber: this.state.phoneNumber
 	}
-	fetch('/userSignup', {
-		method: 'post',
-		headers: { "Content-Type": "application/json" },
+	fetch('HTTP://127.0.0.1:4546/userSignup', {
+		method: 'POST',
 		body: JSON.stringify(user),
 	}).then(response => {
 		return response.json()
@@ -126,7 +123,7 @@ render(){
  			<TextField
  				required
  				fullWidth
- 				onChange={this.handelInputChange}
+ 				onChange={this.handleInputChange}
  				label="Email"
  				name="email"
  				autoComplete="email"
@@ -135,7 +132,7 @@ render(){
 			 <TextField
 				required
 				fullWidth
-				onChange={this.handelInputChange}
+				onChange={this.handleInputChange}
 				label="Username"
 				name="username"
 				autoFocus
@@ -143,7 +140,7 @@ render(){
 				<TextField
  				required
  				fullWidth
- 				onChange={this.handelInputChange}
+ 				onChange={this.handleInputChange}
  				type="password"
 				name="password"
 			  label="Password"
@@ -153,7 +150,7 @@ render(){
 			<TextField
 				required
 				fullWidth
-				onChange={this.handelInputChange}
+				onChange={this.handleInputChange}
 				label="Mobile Number"
 				name="phoneNumber"
 				placeholder="Mobile Number"
