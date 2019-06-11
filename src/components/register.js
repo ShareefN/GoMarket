@@ -47,8 +47,8 @@ class Register extends Component{
 		}
 
     toggalModal(){
-        this.setState({
-            modalIsOpen: ! this.state.modalIsOpen
+      this.setState({
+         modalIsOpen: ! this.state.modalIsOpen
         })
 		}
 		

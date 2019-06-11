@@ -21,19 +21,15 @@ class App extends Component{
       signup: false
     })
   }
-  onSubmitSignup = () => {
-    this.setState({
-      signup: ! this.state.signup,
-      login: false
-    })
-  }
 
   toggelForms = () => {
-    this.setState({
-      signup: this.state.signup,
-      register: ! this.state.register
-    })
-  }
+      this.setState({
+        login: this.state.login,
+        signup: ! this.state.login,
+        register: this.state.register
+      })  
+    }
+  
 
   render(){
     return(
@@ -41,7 +37,7 @@ class App extends Component{
         <Router>
           {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
         </Router>
-     <NavBar onSubmit={this.onSubmit} onSubmitSignup={this.onSubmitSignup} toggelForms={this.toggelForms}/>
+     <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms}/>
      {this.state.login ? <Login login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
      {this.state.register ? <Register register={this.state.register}/> : null}
