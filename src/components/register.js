@@ -28,6 +28,7 @@ class Register extends Component{
 				this.toggalModalOpen = this.toggalModalOpen.bind(this);
 				this.toggelModalClose = this.toggelModalClose.bind(this);
 				this.toggelSwitch = this.toggelSwitch.bind(this);
+				this.userRegister = this.userRegister.bind(this);
     }    
 
     handelInputChange(event){
@@ -61,8 +62,40 @@ class Register extends Component{
 		
 		toggelSwitch(event){
 			this.setState({
-				checkedB: event.target.checked,
+				checkedB: this.props.checkedB,
 			})
+		}
+
+		async userRegister(){
+			const user = {
+				email: this.state.email,
+				username: this.state.username,
+				password: this.state.password,
+				phoneNumber: this.state.password,
+				imgUrl: this.state.imgUrl,
+				cv: this.state.cv,
+			}
+			try {
+				const response = await fetch('/employeeSignUp', {
+					method: 'post',
+					body: JSON.stringify(user),
+					headers: { "Content-Type": "application/json" },
+				});
+				const body = await response.json();
+				if (body.error) {
+					this.setState({
+						message: body.error
+					});
+				}
+				else {
+					this.setState({
+						message: 'Application Accepted, Please Login And Start Collecting Orders',
+					});
+				}
+			}
+			catch (err) {
+				console.log(err);
+			}
 		}
 
 		classes(theme){
@@ -73,11 +106,11 @@ class Register extends Component{
 				},
 			}
 		}
-		
+
     render(){
         return(
 					<div>
-				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
+				<Dialog open={this.toggalModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
 				<Switch 
         checked={this.state.checkedB}
@@ -159,6 +192,7 @@ class Register extends Component{
 				fullWidth
 				variant="contained"
 				color="primary"
+				onClick={this.userRegister}
 			>
 				<Link href="/" style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>

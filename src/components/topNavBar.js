@@ -30,12 +30,6 @@ class NavBar extends Component{
         this.toggelModal = this.toggelModal.bind(this)
     }
 
-    // logOut(){
-    //   this.setState({
-    //     storage: window.localStorage.removeItem("user");
-    //   })
-    // }
-
   toggelModal(){
       this.setState({
         modalIsOpen: ! this.state.modalIsOpen

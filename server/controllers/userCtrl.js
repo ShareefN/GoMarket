@@ -28,7 +28,6 @@ exports.getUser = function(req, res){
 	User.findOne({ where: { 
 		email: req.body.email,
 	}}).then(user => {
-		// console.log(user)
 		bcrypt.compare(req.body.password, user.password).then(function(isMatching){
 			if(isMatching){
 					const token = jwt.sign({
@@ -37,7 +36,7 @@ exports.getUser = function(req, res){
 					}, "JWT_KEY", {expiresIn: 4000});
 					return res.send({token: token});
 			} else {
-					return res.status(401).send({error: 'Wrong password'});
+					return res.status(401).send('Wrong password');
 			}
 	});
 });

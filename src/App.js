@@ -25,12 +25,11 @@ class App extends Component{
   toggelForms = () => {
       this.setState({
         login: this.state.login,
-        signup: ! this.state.signup,
-        register: this.state.register
+        signup: this.state.signup,
+        register: ! this.state.register
       })  
     }
   
-
   render(){
     return(
       <div>
@@ -40,7 +39,7 @@ class App extends Component{
      <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms}/>
      {this.state.login ? <Login login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
-     {this.state.register ? <Register register={this.state.register}/> : null}
+     {this.state.register ? <Register register={this.state.register} /> : null}
     </div>
     )
   }

@@ -16,11 +16,13 @@ class Login extends Component{
 			this.state = {
 					modalIsOpen: false,
 					email: '',
-					password: ''
+					password: '',
+					message: '',
 			}
 			this.toggelModalOpen = this.toggelModalOpen.bind(this);
 			this.handelInputChange = this.handelInputChange.bind(this);
 			this.toggelModalClose = this.toggelModalClose.bind(this);
+			this.login = this.login.bind(this);
 	}
 
 	handelInputChange(event){
@@ -46,6 +48,26 @@ class Login extends Component{
 		this.setState({
 			modalIsOpen: this.state.modalIsOpen
 		})
+	}
+
+	login(){
+		const user = {
+			email: this.state.email,
+			password: this.state.password
+		}
+		fetch('/userLogin', {
+			method: 'get',
+			body: JSON.stringify(user),
+			headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+		}).then((response) => response.json())
+		.then((data) => {
+			if(data.error)
+			return this.setState({
+				message: data.error,
+			})
+		}).catch(err => {
+			console.log(err)
+		})			
 	}
 
 	classes(theme){
@@ -103,9 +125,10 @@ render(){
 	 				type="submit"
 	 				fullWidth
 	 				variant="contained"
-	 				color="primary"
+					 color="primary"
+					 onClick={this.login}
 	 			>
-	 			<Link href="/" style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
+	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
 				 </ModalFooter>
 				 <Grid item>

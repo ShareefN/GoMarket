@@ -14,8 +14,8 @@ class Signup extends Component {
    constructor(props){
        super(props)
        this.state = {
-		modalIsOpen: false,
-		checkedB: false,
+			  modalIsOpen: false,
+			  checkedB: false,
         email: '',
         password: '',
         username: '',
@@ -71,7 +71,7 @@ signUp(){
 		password: this.state.password,
 		phoneNumber: this.state.phoneNumber
 	}
-	fetch('http://127.0.0.1:4546/userSignup', {
+	fetch('/userSignup', {
 		method: 'post',
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(user),

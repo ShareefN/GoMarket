@@ -28,9 +28,9 @@ sequelize.authenticate()
     username: { type: Sequelize.STRING, required: true, unique: true },
     password: { type: Sequelize.STRING, required: true },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true },
-    // imgUrl: { type: Sequelize.STRING },
-		// rating: { type: Sequelize.INTEGER, required: false },
-    // cv: { type: Sequelize.STRING, required: true },
+    imgUrl: { type: Sequelize.STRING, required: false },
+		rating: { type: Sequelize.INTEGER, required: false },
+    cv: { type: Sequelize.STRING, required: false },
     // created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
  })
 
