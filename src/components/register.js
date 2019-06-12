@@ -31,7 +31,7 @@ class Register extends Component{
 				this.toggelSwitch = this.toggelSwitch.bind(this);
 				this.userRegister = this.userRegister.bind(this);
 				this.selectedFile = this.selectedFile.bind(this);
-				this.imageUpload = this.imageUpload.bind(this)
+				this.imageUpload = this.imageUpload.bind(this);
     }    
 
     handelInputChange(event){

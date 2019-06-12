@@ -54,18 +54,23 @@ class Login extends Component{
 			email: this.state.email,
 			password: this.state.password
 		}
+		console.log(user)
 		fetch('/userLogin', {
 			method: 'GET',
 			body: JSON.stringify(user),
 		}).then((response) => response.json())
 		.then((data) => {
-			if(data.error)
+			if(data){
 			return this.setState({
-				message: data.error,
+				message: 'Login Successful',
+				email: '',
+				password: '',
 			})
+		}
 		}).catch(err => {
 			console.log(err)
-		})			
+		})	
+		console.log(this.token)		
 	}
 
 	classes(theme){
@@ -121,13 +126,12 @@ render(){
 	 				variant="contained"
 					 color="primary"
 					 onClick={this.login}
-					 href = "/"
 	 			>
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
 				 </ModalFooter>
 				 <Grid item>
-					<Link href="/userSignup" variant="body2">
+					<Link href="/signup" variant="body2">
 							{"Don't have an account? Sign Up"}
  					</Link>
  				</Grid>

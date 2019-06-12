@@ -53,9 +53,11 @@ class App extends Component{
      {this.state.register ? <Register register={this.state.register} /> : null}
      {this.state.cart ? <Cart cart={this.state.cart} /> : null}
         <Router>
-          {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
+          <Route exact path="/registerForm" render={(props) => <Register />}/>
           {/* <Route exact path="cart" render={(props) => <Cart />}/> */}
           {/* <Route exact path="/" render={(props) => <Slider />}/> */}
+          {/* <Route exact path="/login" render={(props) => <Login />}/> */}
+          <Route exact path="/signup" render={(props) => <Signup />} />
           <Route exact path="/" render={(props) => <NewArrivals />}/>
         </Router>
     </div>

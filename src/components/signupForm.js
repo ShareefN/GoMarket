@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
+import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -27,6 +26,7 @@ class Signup extends Component {
 		 this.toggelModalClose = this.toggelModalClose.bind(this);
 		 this.toggelSwitch = this.toggelSwitch.bind(this);
 		 this.signUp = this.signUp.bind(this);
+		 this.registerForm = this.registerForm.bind(this);
    }
 
 	 handleInputChange(event){
@@ -59,6 +59,14 @@ toggelSwitch(event){
 	})
 }
 
+registerForm(){
+	if(this.state.checkedB === true){
+		return <Redirect to="/registerForm" />
+	}else{
+		return <Redirect to="/signup" />
+	}
+}
+
 signUp(){
 	const user = {
 		email: this.state.email,
@@ -66,7 +74,7 @@ signUp(){
 		password: this.state.password,
 		phoneNumber: this.state.phoneNumber
 	}
-	console.log(user)
+	// console.log(user)
 	fetch('http://127.0.0.1:4546/userSignup', {
 		method: 'POST',
 		body: JSON.stringify(user),
@@ -110,6 +118,7 @@ render(){
 		<div>
 				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
+				Switch Forms
 				<Switch 
         checked={this.state.checkedB}
         onChange={this.toggelSwitch}
@@ -117,6 +126,7 @@ render(){
         color="primary"
         inputProps={{ 'aria-label': 'primary checkbox' }}
       />
+		{this.registerForm()}
 				<DialogContent>
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>
