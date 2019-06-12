@@ -87,7 +87,7 @@ class Cart extends Component{
                       </TableRow>
                     </TableBody>
                     <TableFooter>
-                      {/* Checkout btn the will reroute to the map page */}
+                      <Button>Checkout</Button>
                     </TableFooter>
                   </Table>
 								</Paper>
