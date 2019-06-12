@@ -115,16 +115,13 @@ render(){
 			</form>
 		</div>
 		<ModalFooter>
-	 			<FormControlLabel
-  				control={<Checkbox value="remember" color="primary" />}
-	 				label="Remember me"
-	 			/>
 	 			<Button
 	 				type="submit"
 	 				fullWidth
 	 				variant="contained"
 					 color="primary"
 					 onClick={this.login}
+					 href = "/"
 	 			>
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>

@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
-import { ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -25,7 +18,14 @@ class Cart extends Component{
 					modalIsOpen: false,
 				}
 				this.toggelModalOpen = this.toggelModalOpen.bind(this);
-				this.toggelModalClose = thie.toggelModalClose.bind(this);
+				this.toggelModalClose = this.toggelModalClose.bind(this);
+    }
+
+    componentWillMount(){
+      // console.log()
+      this.setState({
+        modalIsOpen: this.props.cart
+      })
     }
 
 		toggelModalOpen(){
@@ -45,7 +45,8 @@ class Cart extends Component{
 				root: {
 					width: '100%',
 					marginTop: theme.spacing(3),
-					overflowX: 'auto',
+          overflowX: 'auto',
+          justifyContent: 'center',
 				},
 				table: {
 					minWidth: 650,
@@ -61,33 +62,39 @@ class Cart extends Component{
 					marginTop: theme.spacing(1),
 				},
 			}
-		}
+    }
 
     render(){
         return(
             <div>
-								<Dialog isopen={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
+								<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 								<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>Cart</DialogTitle>
 								<DialogContent>
 								<Paper className={this.classes.root}>
                   <Table className={this.classes.tables}>
                     <TableHead>
                       <TableRow>
-                        <TabelCell>Item</TabelCell>
-                        <TabelCell>Quantity</TabelCell>
+                        <TableCell>Item</TableCell>
+                        <TableCell>Quantity</TableCell>
                         <TableCell>Price</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       <TableRow>
-                        <TableCell>{ item }</TableCell>
-                        <TableCell>{ quantity }</TableCell>
-                        <TabelCell>{ price }</TabelCell>
+                        <TableCell>Milk</TableCell>
+                        <TableCell>1</TableCell>
+                        <TableCell>11 JD</TableCell>
                         {/* remove item btn */}
+                      </TableRow>
+                      <TableRow>
+                        <TableCell>Eggs</TableCell>
+                        <TableCell>3</TableCell>
+                        <TableCell>9 JD</TableCell>
                       </TableRow>
                     </TableBody>
                     <TableFooter>
-                      <Button>Checkout</Button>
+                      <Button type="submit" size="small" fullWidth color="primary" href="/">Checkout</Button>
+                      {/* <Button type="submit" fullWidth	variant="contained" color="primary" href="/">Continue Shopping</Button> */}
                     </TableFooter>
                   </Table>
 								</Paper>

@@ -22,19 +22,6 @@ const StyledBadge = withStyles((theme) => ({
   }))(Badge);
 
 class NavBar extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-          modalIsOpen: false
-        }
-        this.toggelModal = this.toggelModal.bind(this)
-    }
-
-  toggelModal(){
-      this.setState({
-        modalIsOpen: ! this.state.modalIsOpen
-      })
-    }
 
     classes(theme) {
         return{
@@ -55,7 +42,7 @@ class NavBar extends Component{
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
       <Button color="inherit" onClick={() => {this.props.toggelForms()}}>SignUp/Register</Button>
-    <IconButton aria-label="Cart" color="inherit">
+    <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
     <StyledBadge badgeContent={4} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>

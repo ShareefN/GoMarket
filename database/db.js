@@ -34,13 +34,15 @@ sequelize.authenticate()
     // created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
  })
 
- const Cart = sequelize/define('cart', {
+ const Cart = sequelize.define('cart', {
    id: { type: Sequelize.INTEGER, autoIncrement: true,primaryKey: true},
+   item: { type: Sequelize.STRING, required: true },
+   price: { type: Sequelize.INTEGER, required: true }
  })
 
  Employee.hasMany(User);
  Cart.hasMany(User);
- 
+
  sequelize.sync();
 
  module.exports.User = User;

@@ -32,9 +32,9 @@ class HotDeals extends Component{
 
     render(){
         return(
-					<Grid container className={this.classes.root}>
+					<div>
 
-					</Grid>
+          </div>
         )
     }
 }

@@ -5,8 +5,8 @@ const bodyparser = require('body-parser');
 const users = require('./router');
 const port = process.env.PORT || 4546;
 
-app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
 
 app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");

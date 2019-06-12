@@ -20,8 +20,6 @@ class Signup extends Component {
         password: '',
         username: '',
         phoneNumber: '',
-        imgUrl: '',
-				cv: '',
 				message: ''
        }
 		 this.handleInputChange = this.handleInputChange.bind(this);
@@ -69,20 +67,23 @@ signUp(){
 		phoneNumber: this.state.phoneNumber
 	}
 	console.log(user)
-	fetch('HTTP://127.0.0.1:4546/userSignup', {
+	fetch('http://127.0.0.1:4546/userSignup', {
 		method: 'POST',
 		body: JSON.stringify(user),
+		headers: { "Content-Type": "application/json" }
 	}).then(response => {
 		return response.json()
 	}).then(body => {
-		if (body.error){
-			this.setState({
-				message: body.error
-			});
-		}else{
+		// console.log('hello')
+		if (body){
 			this.setState({
 				message: 'Signup Completed, Please Login',
+				email :'',
+				passwod: '',
+				username: '',
+				phoneNumber: ''
 			})
+			console.log(this.state.message)
 		}
 	}).catch(err => {
 		console.log(err)
@@ -160,16 +161,13 @@ render(){
 			</form>
 		</div>
 		<ModalFooter>
-	 			<FormControlLabel
-  				control={<Checkbox value="remember" color="primary" />}
-	 				label="Remember me"
-	 			/>
 	 			<Button
 				type="submit"
 				fullWidth
 				variant="contained"
 				color="primary"
 				onClick={this.signUp}
+				href = "/"
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Signup</Link>
 			</Button>

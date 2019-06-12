@@ -4,7 +4,10 @@ import Login from './components/loginForm';
 import Signup from './components/signupForm';
 import NavBar from './components/topNavBar';
 import Register from './components/register';
-import HotDeals from './components/hotDeals'
+import Cart from './components/cart';
+// import HotDeals from './components/hotDeals';
+import NewArrivals from './components/newArrivals';
+// import Slider from './components/slider'
 
 class App extends Component{
   constructor(props){
@@ -12,7 +15,8 @@ class App extends Component{
     this.state = {
       login: false,
       signup: false,
-      register: false
+      register: false,
+      cart: false
     }
   }    
 
@@ -27,21 +31,33 @@ class App extends Component{
       this.setState({
         login: this.state.login,
         signup: ! this.state.signup,
-        register: this.state.register
+        register: this.state.register,
       })  
+    }
+
+    toggelCart = () => {
+      // console.log(this.state.cart)
+      this.setState({
+        cart: !this.state.cart,
+        // signup: ! this.state.signup
+      })
+      // console.log(this.state.cart)
     }
   
   render(){
     return(
       <div>
-        <Router>
-          {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
-          {/* <Route exact path="hotDeals" render={(props) => <HotDeals />}/> */}
-        </Router>
-     <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms}/>
+     <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms} toggelCart={this.toggelCart}/>
      {this.state.login ? <Login login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
      {this.state.register ? <Register register={this.state.register} /> : null}
+     {this.state.cart ? <Cart cart={this.state.cart} /> : null}
+        <Router>
+          {/* <Route exact path="registerForm" render={(props) => <Register />}/> */}
+          {/* <Route exact path="cart" render={(props) => <Cart />}/> */}
+          {/* <Route exact path="/" render={(props) => <Slider />}/> */}
+          <Route exact path="/" render={(props) => <NewArrivals />}/>
+        </Router>
     </div>
     )
   }

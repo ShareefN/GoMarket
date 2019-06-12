@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Employee } = require('../../database/db');
+const { User, Employee, Cart } = require('../../database/db');
 
 exports.createUser = function(req, res){
 	// const password = req.body.password;
 	// const hashedPass = bcrypt.hashSync(password, 10);
-
+	console.log(req.body, 'ctrl')
 		User.create({
 			email: req.body.email,
 			username: req.body.username,
@@ -40,10 +40,6 @@ exports.createEmployee = function(req, res){
 	const password = req.body.password;
 	const hashedPass = bcrypt.hashSync(password, 10);
 
-	Employee.findAll({ where: {
-		email: req.body.email,
-	}}).then(employee => {
-		if(!employee){
 			Employee.create({
 				email: req.body.email,
 				username: req.body.username,
@@ -54,10 +50,7 @@ exports.createEmployee = function(req, res){
 				}).catch(err => {
 					res.status(401).send(err)
 				})
-		}else{
-			res.send(user)
-		}
-	})
+}
 
 exports.getEmployee = function(req, res){
 	Employee.findOne({ where: { 
@@ -76,4 +69,14 @@ exports.getEmployee = function(req, res){
 	});
 });
 }
+
+exports.addItem = function(req, res){
+	Cart.create({
+		item: req.body.item,
+		price: req.body.price
+	}).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
 }

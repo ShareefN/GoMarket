@@ -2,6 +2,7 @@ const router = require('express').Router();
 const userCtrl = require('./controllers/userCtrl');
 
 router.route('/userSignup').post((req, res) => {
+	console.log(req.body, 'router')
 	userCtrl.createUser(req, res);
 })
 
@@ -17,5 +18,8 @@ router.route('/emplyeeLogin').get((req, res) => {
 	userCtrl.getEmployee(req, res);
 })
 
+router.route('/addItem').post((req, res) => {
+	userCtrl.addItem(req, res);
+})
 
 module.exports.router = router;
