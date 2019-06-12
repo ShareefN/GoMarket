@@ -6,15 +6,10 @@ exports.createUser = function(req, res){
 	// const password = req.body.password;
 	// const hashedPass = bcrypt.hashSync(password, 10);
 	console.log(req.body, 'ctrl')
-		User.create({
-			email: req.body.email,
-			username: req.body.username,
-			password: req.body.password,
-			phoneNumber: req.body.phoneNumber
-		}).then(user => {
+		User.create(req.body).then(user => {
 			return res.send(user);
 			}).catch(err => {
-				res.status(401).send(err)
+				console.log("NOOOOOOOOO", err)
 			})
 }
 

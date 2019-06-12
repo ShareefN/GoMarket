@@ -2,7 +2,6 @@ const router = require('express').Router();
 const userCtrl = require('./controllers/userCtrl');
 
 router.route('/userSignup').post((req, res) => {
-	console.log(req.body, 'router')
 	userCtrl.createUser(req, res);
 })
 
