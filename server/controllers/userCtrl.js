@@ -5,10 +5,7 @@ const { User, Employee } = require('../../database/db');
 exports.createUser = function(req, res){
 	// const password = req.body.password;
 	// const hashedPass = bcrypt.hashSync(password, 10);
-	User.findAll({ where: {
-		email: req.body.email,
-	}}).then(user => {
-		if(!user){
+
 		User.create({
 			email: req.body.email,
 			username: req.body.username,
@@ -19,10 +16,6 @@ exports.createUser = function(req, res){
 			}).catch(err => {
 				res.status(401).send(err)
 			})
-	}else{
-		res.send(user)
-	}
-})
 }
 
 exports.getUser = function(req, res){

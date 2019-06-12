@@ -35,7 +35,6 @@ class Signup extends Component {
     this.setState({
 			[event.target.name]: event.target.value
 		})
-		console.log(this.state)
 }
 
 componentWillMount(){
@@ -69,6 +68,7 @@ signUp(){
 		password: this.state.password,
 		phoneNumber: this.state.phoneNumber
 	}
+	console.log(user)
 	fetch('HTTP://127.0.0.1:4546/userSignup', {
 		method: 'POST',
 		body: JSON.stringify(user),
