@@ -4,8 +4,6 @@ import { ModalBody, ModalFooter } from 'reactstrap';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -219,6 +217,7 @@ class Register extends Component{
 			>
 				<Link href="/" style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>
+			<Button><Link href="/">Cancel</Link></Button>
 				 </ModalFooter>
 				</DialogContent>
 				</Dialog>

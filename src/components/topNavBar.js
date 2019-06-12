@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -36,8 +37,8 @@ class NavBar extends Component{
     <div style={{marginBottom: '3%'}}>
     <AppBar position="static">
     <Toolbar>
-      <Typography href="/" style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
-        GoMarket
+      <Typography style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
+        <Link href="/" style={{color: 'white', textDecoration: 'none'}}>GoMarket</Link>
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>

@@ -180,6 +180,7 @@ render(){
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Signup</Link>
 			</Button>
+			<Button><Link href="/">Cancel</Link></Button>
 				 </ModalFooter>
 				</DialogContent>
 				</Dialog>
