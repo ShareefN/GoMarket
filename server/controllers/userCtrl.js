@@ -9,7 +9,7 @@ exports.createUser = function(req, res){
 		User.create(req.body).then(user => {
 			return res.send(user);
 			}).catch(err => {
-				console.log("NOOOOOOOOO", err)
+				console.log("Error: ", err)
 			})
 }
 
@@ -32,18 +32,13 @@ exports.getUser = function(req, res){
 };
 
 exports.createEmployee = function(req, res){
-	const password = req.body.password;
-	const hashedPass = bcrypt.hashSync(password, 10);
-
-			Employee.create({
-				email: req.body.email,
-				username: req.body.username,
-				password: hashedPass,
-				phoneNumber: req.body.phoneNumber
-			}).then(employee => {
+	// const password = req.body.password;
+	// const hashedPass = bcrypt.hashSync(password, 10);
+console.log(req.body, 'emp ctrl')
+			Employee.create(req.body).then(employee => {
 				return res.send(employee);
 				}).catch(err => {
-					res.status(401).send(err)
+					console.log('Error: ', err)
 				})
 }
 

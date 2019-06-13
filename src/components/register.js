@@ -62,36 +62,35 @@ class Register extends Component{
 			})
 		}
 
-		async userRegister(){
-			const user = {
-				email: this.state.email,
-				username: this.state.username,
-				password: this.state.password,
-				phoneNumber: this.state.password,
-				imgUrl: this.state.imgUrl,
-				cv: this.state.cv,
-			}
-			try {
-				const response = await fetch('/employeeSignUp', {
-					method: 'post',
-					body: JSON.stringify(user),
-				});
-				const body = await response.json();
-				if (body.error) {
-					this.setState({
-						message: body.error
-					});
-				}
-				else {
-					this.setState({
-						message: 'Application Accepted, Please Login And Start Collecting Orders',
-					});
-				}
-			}
-			catch (err) {
-				console.log(err);
-			}
+		userRegister(){
+		const user = {
+			email: this.state.email,
+			username: this.state.username,
+			password: this.state.password,
+			phoneNumber: this.state.phoneNumber
 		}
+		console.log(user)
+		fetch('http://127.0.0.1:4546/employeeSignup', {
+			method: 'POST',
+			body: JSON.stringify(user),
+			headers: { "Content-Type": "application/json" }
+		}).then(response => {
+			return response.json()
+		}).then(body => {
+			if (body){
+				this.setState({
+					message: 'Application Completed, Please Login And Start Taking Orders',
+					email :'',
+					passwod: '',
+					username: '',
+					phoneNumber: ''
+				})
+				console.log(this.state.message)
+			}
+		}).catch(err => {
+			console.log(err)
+		})
+	}
 
 		selectedFile(event){
 			const image = event.target.files[0];
@@ -99,6 +98,7 @@ class Register extends Component{
 				image
 			})
 		}
+		
 
 		imageUpload(event){
 			const { image } = this.state;
@@ -215,9 +215,9 @@ class Register extends Component{
 				color="primary"
 				onClick={this.userRegister}
 			>
-				<Link href="/" style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
+				<Link style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>
-			<Button><Link href="/">Cancel</Link></Button>
+			<Button><Link href = "/">Cancel</Link></Button>
 				 </ModalFooter>
 				</DialogContent>
 				</Dialog>

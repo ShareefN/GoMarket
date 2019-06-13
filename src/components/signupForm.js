@@ -82,7 +82,6 @@ signUp(){
 	}).then(response => {
 		return response.json()
 	}).then(body => {
-		// console.log('hello')
 		if (body){
 			this.setState({
 				message: 'Signup Completed, Please Login',
