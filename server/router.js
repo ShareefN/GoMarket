@@ -10,7 +10,6 @@ router.route('/userLogin').get((req, res) => {
 })
 
 router.route('/employeeSignUp').post((req, res) => {
-	console.log(req.body, 'emp router')
 	userCtrl.createEmployee(req, res);
 })
 

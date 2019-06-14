@@ -21,6 +21,7 @@ class NewArrivals extends Component{
   					<div class="card-body">
     					<h5 class="card-title">Iphone Xs Max</h5>
     					<p class="card-text">Super Retina in two sizes including the largest display ever on an iPhone. Even faster Face ID. </p>
+							<p class="card-text">Price: 850 JD</p>
     					<a href="#" class="btn btn-primary" style={{margin: '20%'}}>Add To Cart</a>
   				</div>
 				</div>
@@ -29,6 +30,7 @@ class NewArrivals extends Component{
   					<div class="card-body">
     					<h5 class="card-title">Iphone Xs Max</h5>
     					<p class="card-text">Super Retina in two sizes including the largest display ever on an iPhone. Even faster Face ID. </p>
+							<p class="card-text">Price: 850 JD</p>
     					<a href="#" class="btn btn-primary" style={{margin: '20%'}}>Add To Cart</a>
   				</div>
 				</div>
@@ -37,6 +39,7 @@ class NewArrivals extends Component{
   					<div class="card-body">
     					<h5 class="card-title">Iphone Xs Max</h5>
     					<p class="card-text">Super Retina in two sizes including the largest display ever on an iPhone. Even faster Face ID. </p>
+							<p class="card-text">Price: 850 JD</p>
     					<a href="#" class="btn btn-primary" style={{margin: '20%'}}>Add To Cart</a>
   				</div>
 				</div>

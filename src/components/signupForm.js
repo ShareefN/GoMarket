@@ -13,13 +13,13 @@ class Signup extends Component {
    constructor(props){
        super(props)
        this.state = {
-			  modalIsOpen: false,
-			  checkedB: false,
+		modalIsOpen: false,
+	    checkedB: false,
         email: '',
         password: '',
         username: '',
         phoneNumber: '',
-				message: ''
+		message: ''
        }
 		 this.handleInputChange = this.handleInputChange.bind(this);
 		 this.toggelModalOpen = this.toggelModalOpen.bind(this);

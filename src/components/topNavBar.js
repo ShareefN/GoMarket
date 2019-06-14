@@ -30,7 +30,7 @@ class NavBar extends Component{
           flexGrow: 1,
         },
       }
-    }
+    } 
 
     render(){
         return(
@@ -38,11 +38,11 @@ class NavBar extends Component{
     <AppBar position="static">
     <Toolbar>
       <Typography style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
-        <Link href="/" style={{color: 'white', textDecoration: 'none'}}>GoMarket</Link>
+        <Link href="#" style={{color: 'white', textDecoration: 'none'}}>GoMarket</Link>
       </Typography>
       <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
-      <Button color="inherit" onClick={() => {this.props.toggelForms()}}>SignUp/Register</Button>
+      <Button color="inherit">SignUp/Register</Button>
     <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
     <StyledBadge badgeContent={4} color="primary">
     <ShoppingCartIcon />
@@ -53,6 +53,7 @@ class NavBar extends Component{
   </AppBar>
   <Paper className={this.classes.root}>
   <Tabs
+  value={0}
     indicatorColor="primary"
     textColor="primary"
     centered >      

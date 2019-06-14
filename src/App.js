@@ -5,9 +5,9 @@ import Signup from './components/signupForm';
 import NavBar from './components/topNavBar';
 import Register from './components/register';
 import Cart from './components/cart';
-// import HotDeals from './components/hotDeals';
+import HotDeals from './components/hotDeals';
 import NewArrivals from './components/newArrivals';
-// import Slider from './components/slider'
+import Slider from './components/slider'
 
 class App extends Component{
   constructor(props){
@@ -36,12 +36,9 @@ class App extends Component{
     }
 
     toggelCart = () => {
-      // console.log(this.state.cart)
       this.setState({
         cart: !this.state.cart,
-        // signup: ! this.state.signup
       })
-      // console.log(this.state.cart)
     }
   
   render(){
@@ -54,8 +51,10 @@ class App extends Component{
      {this.state.cart ? <Cart cart={this.state.cart} /> : null}
         <Router>
           <Route exact path="/registerForm" render={(props) => <Register />}/>
-          <Route exact path="/signup" render={(props) => <Signup />} />
+          <Route exact path="/signup" render={(props) => <Signup />}/>
+          <Route exact path="/" render={(props) => <Slider />}/>
           <Route exact path="/" render={(props) => <NewArrivals />}/>
+          {/* <Route exact path="/" render={(props) => <HotDeals />}/> */}
         </Router>
     </div>
     )

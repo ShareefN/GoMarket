@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Employee, Cart } = require('../../database/db');
+const { User, Employee, Cart, Orders } = require('../../database/db');
 
 exports.createUser = function(req, res){
 	// const password = req.body.password;
 	// const hashedPass = bcrypt.hashSync(password, 10);
-	console.log(req.body, 'ctrl')
+
 		User.create(req.body).then(user => {
 			return res.send(user);
 			}).catch(err => {
@@ -54,17 +54,14 @@ exports.getEmployee = function(req, res){
 					}, "JWT_KEY", {expiresIn: 4000});
 					return res.send({token: token});
 			} else {
-					return res.status(HTTP_UNAUTHORIZED).send({error: 'Wrong password'});
+					return res.status(401).send({error: 'Wrong password'});
 			}
 	});
 });
 }
 
 exports.addItem = function(req, res){
-	Cart.create({
-		item: req.body.item,
-		price: req.body.price
-	}).then(item => {
+	Cart.create(req.body).then(item => {
 		return res.send(item)
 	}).catch(err => {
 		console.log(err)

@@ -35,15 +35,22 @@ sequelize.authenticate()
  })
 
  const Cart = sequelize.define('cart', {
-   id: { type: Sequelize.INTEGER, autoIncrement: true,primaryKey: true},
+   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
    item: { type: Sequelize.STRING, required: true },
    price: { type: Sequelize.INTEGER, required: true }
  })
 
+ const Orders = sequelize.define('order', {
+   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
+ })
+
  Employee.hasMany(User);
- Cart.hasMany(User);
+ Cart.belongsTo(User);
+ Orders.hasMany(Cart)
 
  sequelize.sync();
 
  module.exports.User = User;
  module.exports.Employee = Employee;
+ module.exports.Cart = Cart;
+ module.exports.Orders = Orders;
