@@ -7,7 +7,12 @@ import Register from './components/register';
 import Cart from './components/cart';
 import HotDeals from './components/hotDeals';
 import NewArrivals from './components/newArrivals';
-import Slider from './components/slider'
+import Slider from './components/slider';
+import Groceries from './components/groceries';
+import Electronics from './components/electronics';
+import HouseHold from './components/household';
+import Beauty from './components/beauty';
+import Exercise from './components/exercise';
 
 class App extends Component{
   constructor(props){
@@ -53,8 +58,13 @@ class App extends Component{
           <Route exact path="/registerForm" render={(props) => <Register />}/>
           <Route exact path="/signup" render={(props) => <Signup />}/>
           <Route exact path="/" render={(props) => <Slider />}/>
-          <Route exact path="/" render={(props) => <NewArrivals />}/>
+          {/* <Route exact path="/" render={(props) => <NewArrivals />}/> */}
           {/* <Route exact path="/" render={(props) => <HotDeals />}/> */}
+          <Route exact path="/groceries" render={(props) => <Groceries />} />
+          <Route exact path="/electronics" render={(props) => <Electronics />}/>
+          <Route exact path="/household" render={(props) => <HouseHold />}/>
+          <Route exact path="/beauty" render={(props) => <Beauty />}/>
+          <Route exact path="/exercise" render={(props) => <Exercise />}/>
         </Router>
     </div>
     )

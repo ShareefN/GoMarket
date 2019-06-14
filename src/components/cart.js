@@ -22,7 +22,6 @@ class Cart extends Component{
     }
 
     componentWillMount(){
-      // console.log()
       this.setState({
         modalIsOpen: this.props.cart
       })

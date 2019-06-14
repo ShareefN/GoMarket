@@ -61,7 +61,7 @@ class NavBar extends Component{
     <Tab label="Elctronics" />
     <Tab label="Household Appliences"/>
     <Tab label="Beauty & Personal Care" />
-    <Tab label="Excersie / Workout"/>
+    <Tab label="Exercise / Workout"/>
   </Tabs>
 </Paper>
 </div>
