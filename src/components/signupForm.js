@@ -24,9 +24,7 @@ class Signup extends Component {
 		 this.handleInputChange = this.handleInputChange.bind(this);
 		 this.toggelModalOpen = this.toggelModalOpen.bind(this);
 		 this.toggelModalClose = this.toggelModalClose.bind(this);
-		 this.toggelSwitch = this.toggelSwitch.bind(this);
 		 this.signUp = this.signUp.bind(this);
-		 this.registerForm = this.registerForm.bind(this);
    }
 
 	 handleInputChange(event){
@@ -53,20 +51,6 @@ toggelModalClose(){
 	})
 }
 
-toggelSwitch(event){
-	this.setState({
-		checkedB: event.target.checked
-	})
-}
-
-registerForm(){
-	if(this.state.checkedB === true){
-		return <Redirect to="/registerForm" />
-	}else{
-		return <Redirect to="/signup" />
-	}
-}
-
 signUp(){
 	const user = {
 		email: this.state.email,
@@ -75,7 +59,7 @@ signUp(){
 		phoneNumber: this.state.phoneNumber
 	}
 	// console.log(user)
-	fetch('http://127.0.0.1:4546/userSignup', {
+	fetch('http://127.0.0.1:6060/userSignup', {
 		method: 'POST',
 		body: JSON.stringify(user),
 		headers: { "Content-Type": "application/json" }
@@ -116,16 +100,7 @@ render(){
 	return(
 		<div>
 				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
-				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
-				Switch Forms
-				<Switch 
-        checked={this.state.checkedB}
-        onChange={this.toggelSwitch}
-        value="checkedB"
-        color="primary"
-        inputProps={{ 'aria-label': 'primary checkbox' }}
-      />
-		{this.registerForm()}
+				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup</DialogTitle>
 				<DialogContent>
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>

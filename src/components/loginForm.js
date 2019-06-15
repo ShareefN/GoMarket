@@ -130,6 +130,7 @@ render(){
 					 >			 
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
+				 <Button><Link href="/">Cancel</Link></Button>
 				 </ModalFooter>
 				 <Grid item>
 					<Link href="/signup" variant="body2">

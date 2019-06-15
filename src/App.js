@@ -26,28 +26,31 @@ class App extends Component{
   onSubmit = () => {
     this.setState({
       login: ! this.state.login,
-      signup: this.state.signup
     })
   }
 
-  toggelForms = () => {
-      this.setState({
-        login: this.state.login,
-        signup: ! this.state.signup,
-        register: this.state.register,
-      })  
-    }
+  onSignup = () => {
+    this.setState({
+      signup: ! this.state.signup
+    })
+  }
+
+  onRegister = () => {
+    this.setState({
+      register: ! this.state.register
+    })
+  }
 
     toggelCart = () => {
       this.setState({
-        cart: !this.state.cart,
+        cart: ! this.state.cart,
       })
     }
   
   render(){
     return(
       <div>
-     <NavBar onSubmit={this.onSubmit} toggelForms={this.toggelForms} toggelCart={this.toggelCart}/>
+     <NavBar onSubmit={this.onSubmit} onSignup={this.onSignup} onRegister={this.onRegister} toggelCart={this.toggelCart}/>
      {this.state.login ? <Login login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
      {this.state.register ? <Register register={this.state.register} /> : null}
@@ -56,8 +59,8 @@ class App extends Component{
           <Route exact path="/registerForm" render={(props) => <Register />}/>
           <Route exact path="/signup" render={(props) => <Signup />}/>
           {/* <Route exact path="/" render={(props) => <Slider />}/> */}
-          {/* <Route exact path="/" render={(props) => <NewArrivals />}/> */}
-          <Route exact path="/" render={(props) => <HotDeals />}/>
+          <Route exact path="/" render={(props) => <NewArrivals />}/>
+          {/* <Route exact path="/" render={(props) => <HotDeals />}/> */}
           <Route exact path="/groceries" render={(props) => <Groceries />} />
           <Route exact path="/electronics" render={(props) => <Electronics />}/>
           <Route exact path="/exercise" render={(props) => <Exercise />}/>

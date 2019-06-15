@@ -76,9 +76,25 @@ exports.Gym = function(req, res){
 	})
 }
 
+exports.getGym = function(req, res){
+	Gym.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
 exports.Groceries = function(req, res){
 	Groceries.create(req.body).then(item => {
 		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getGroceries = function(req, res){
+	Groceries.findAll().then(data => {
+		return res.send(data)
 	}).catch(err => {
 		console.log(err)
 	})
@@ -92,6 +108,14 @@ exports.Electronics = function(req, res){
 	})
 }
 
+exports.getElectronics = function(req, res){
+	Electronics.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
 exports.Newarrivals = function(req, res){
 	Newarrivals.create(req.body).then(item => {
 		return res.send(item)
@@ -100,9 +124,25 @@ exports.Newarrivals = function(req, res){
 	})
 }
 
+exports.getNewArrivals = function(req, res){
+	Newarrivals.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
 exports.Hotdeals = function(req, res){
 	Hotdeals.create(req.body).then(item => {
 		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getHotdeals = function(req, res){
+	Hotdeals.findAll().then(data => {
+		return res.send(data)
 	}).catch(err => {
 		console.log(err)
 	})

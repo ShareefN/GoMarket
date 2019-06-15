@@ -70,7 +70,7 @@ class Register extends Component{
 			phoneNumber: this.state.phoneNumber
 		}
 		console.log(user)
-		fetch('http://127.0.0.1:4546/employeeSignup', {
+		fetch('http://127.0.0.1:6060/employeeSignup', {
 			method: 'POST',
 			body: JSON.stringify(user),
 			headers: { "Content-Type": "application/json" }

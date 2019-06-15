@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express().use('*', cors());
 const bodyparser = require('body-parser');
 const users = require('./router');
-const port = process.env.PORT || 4546;
+const port = process.env.PORT || 6060;
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
