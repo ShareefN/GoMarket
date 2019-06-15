@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import { BrowserRouter, Router, Route, NavLink} from "react-router-dom";
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -53,16 +54,17 @@ class NavBar extends Component{
     </Toolbar>
   </AppBar>
   <Paper className={this.classes.root}>
+    <BrowserRouter>
   <Tabs
-  value={0}
     indicatorColor="primary"
     textColor="primary"
-    centered >      
-    <Tab label="Groceries" />
-    <Tab label="Elctronics" />
-    <Tab label="Household Appliences"/>
-    <Tab label="Exercise / Workout"/>
+    centered >
+     <NavLink to="/" style={{textDecoration: "none"}}><Tab label="Home" /></NavLink>
+    <NavLink to="/groceries" style={{textDecoration: "none"}}><Tab label="Groceries" /></NavLink>
+    <NavLink to="/electronics" style={{textDecoration: "none"}}><Tab label="Elctronics" /></NavLink>
+    <NavLink to="/exercise" style={{textDecoration: "none"}}><Tab label="Exercise / Workout"/></NavLink>
   </Tabs>
+  </BrowserRouter>
 </Paper>
 </div>
     )
