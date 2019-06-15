@@ -36,7 +36,7 @@ sequelize.authenticate()
 
  const Cart = sequelize.define('cart', {
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-   item: { type: Sequelize.STRING, required: true },
+   name: { type: Sequelize.STRING, required: true },
    price: { type: Sequelize.INTEGER, required: true }
  })
 
@@ -44,9 +44,43 @@ sequelize.authenticate()
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
  })
 
+const Electronics = sequelize.define('electronics', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
+const Groceries = sequelize.define('groceries', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
+const Gym = sequelize.define('gym', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
+const Hotdeals = sequelize.define('hotdeals', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
+const Newarrivals = sequelize.define('newarrivals', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
  Employee.hasMany(User);
- Cart.belongsTo(User);
- Orders.hasMany(Cart)
+ Cart.belongsTo(User)
 
  sequelize.sync();
 
@@ -54,3 +88,8 @@ sequelize.authenticate()
  module.exports.Employee = Employee;
  module.exports.Cart = Cart;
  module.exports.Orders = Orders;
+ module.exports.Electronics = Electronics;
+ module.exports.Groceries = Groceries;
+module.exports.Gym = Gym;
+module.exports.Newarrivals = Newarrivals;
+module.exports.Hotdeals = Hotdeals;

@@ -136,13 +136,6 @@ class Register extends Component{
 					<div>
 				<Dialog open={this.toggalModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
-				<Switch 
-        checked={this.state.checkedB}
-        onChange={this.toggelSwitch}
-        value="checkedB"
-        color="primary"
-        inputProps={{ 'aria-label': 'primary checkbox' }}
-      />
 				<DialogContent>
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>

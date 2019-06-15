@@ -85,11 +85,6 @@ class Cart extends Component{
                         <TableCell>11 JD</TableCell>
                         {/* remove item btn */}
                       </TableRow>
-                      <TableRow>
-                        <TableCell>Eggs</TableCell>
-                        <TableCell>3</TableCell>
-                        <TableCell>9 JD</TableCell>
-                      </TableRow>
                     </TableBody>
                     <TableFooter>
                       <Button type="submit" size="small" fullWidth color="primary" href="/">Checkout</Button>

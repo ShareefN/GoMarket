@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
+import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -125,8 +126,8 @@ render(){
 	 				fullWidth
 	 				variant="contained"
 					 color="primary"
-					 onClick={this.login}
-	 			>
+					   onClick={this.login}
+					 >			 
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
 				 </ModalFooter>

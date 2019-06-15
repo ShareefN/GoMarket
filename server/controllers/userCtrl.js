@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Employee, Cart, Orders } = require('../../database/db');
+const { User, Employee, carts, Orders, Electronics, HouseHold, Gym, Groceries, Newarrivals, Hotdeals } = require('../../database/db');
 
 exports.createUser = function(req, res){
 	// const password = req.body.password;
@@ -60,8 +60,48 @@ exports.getEmployee = function(req, res){
 });
 }
 
-exports.addItem = function(req, res){
-	Cart.create(req.body).then(item => {
+exports.addItemToCart = function(req, res){
+	carts.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.Gym = function(req, res){
+	Gym.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.Groceries = function(req, res){
+	Groceries.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.Electronics = function(req, res){
+	Electronics.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.Newarrivals = function(req, res){
+	Newarrivals.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.Hotdeals = function(req, res){
+	Hotdeals.create(req.body).then(item => {
 		return res.send(item)
 	}).catch(err => {
 		console.log(err)
