@@ -16,6 +16,7 @@ class Cart extends Component{
         super(props);
         this.state = {
 					modalIsOpen: false,
+					items: [],
 				}
 				this.toggelModalOpen = this.toggelModalOpen.bind(this);
 				this.toggelModalClose = this.toggelModalClose.bind(this);
@@ -87,8 +88,8 @@ class Cart extends Component{
                       </TableRow>
                     </TableBody>
                     <TableFooter>
-                      <Button type="submit" size="small" fullWidth color="primary" href="/">Checkout</Button>
-                      {/* <Button type="submit" fullWidth	variant="contained" color="primary" href="/">Continue Shopping</Button> */}
+                      <Button type="submit" size="small" fullWidth color="primary" href="/" style={{marginLeft: '185%'}}>Checkout</Button>
+                      {/* <Button type="submit" size="small" fullWidth color="primary"  href="/" onClick={this.toggelModalClose}>Continue Shopping</Button> */}
                     </TableFooter>
                   </Table>
 								</Paper>

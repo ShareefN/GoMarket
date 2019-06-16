@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import { BrowserRouter, Router, Route, NavLink} from "react-router-dom";
+import { BrowserRouter, Router, Route } from "react-router-dom";
+import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
-import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -59,10 +59,10 @@ class NavBar extends Component{
     indicatorColor="primary"
     textColor="primary"
     centered >
-     <NavLink to="/" style={{textDecoration: "none"}}><Tab label="Home" /></NavLink>
-    <NavLink to="/groceries" style={{textDecoration: "none"}}><Tab label="Groceries" /></NavLink>
-    <NavLink to="/electronics" style={{textDecoration: "none"}}><Tab label="Elctronics" /></NavLink>
-    <NavLink to="/exercise" style={{textDecoration: "none"}}><Tab label="Exercise / Workout"/></NavLink>
+     <Link href ="/" style={{textDecoration: 'none'}}><Tab label="Home" /></Link>
+     <Link href ="/groceries" style={{textDecoration: 'none'}}><Tab label="Groceries" /></Link>
+     <Link href ="/electronics" style={{textDecoration: 'none'}}><Tab label="Elctronics" /></Link>
+     <Link href ="/exercise" style={{textDecoration: 'none'}}><Tab label="Exercise / Workout"/></Link>
   </Tabs>
   </BrowserRouter>
 </Paper>

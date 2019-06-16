@@ -1,77 +1,87 @@
-// import React, { Component } from 'react';
-// import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import React, { Component } from 'react';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 
-// class Slider extends Component{
-// 	constructor(props){
-// 		super(props);
-// 		this.state = {
-// 			activeIndex: 0,
-// 		}
-// 		this.onExited = this.onExited.bind(this);
-// 		this.onExiting = this.onExiting.bind(this);
-// 		this.next = this.next.bind(this);
-// 		this.previous = this.previous.bind(this);
-// 		this.goToIndex = this.goToIndex.bind(this);
-// 	}
+class Slider extends Component{
+	constructor(props){
+		super(props);
+		this.state = {
+            activeIndex: 0,
+            items: [],
+		}
+		this.onExited = this.onExited.bind(this);
+		this.onExiting = this.onExiting.bind(this);
+		this.next = this.next.bind(this);
+		this.previous = this.previous.bind(this);
+		this.goToIndex = this.goToIndex.bind(this);
+	}
 
-// 	onExiting() {
-//     this.animating = true;
-//   }
+    componentDidMount(){
+        fetch('/getSlides').then(data => data.json())
+        .then((data) => {
+            this.setState({
+                items: data
+            })
+        })
+    }
 
-//   onExited() {
-//     this.animating = false;
-//   }
+	onExiting() {
+    this.animating = true;
+  }
 
-//   next() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
+  onExited() {
+    this.animating = false;
+  }
 
-//   previous() {
-//     if (this.animating) return;
-//     const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
-//     this.setState({ activeIndex: nextIndex });
-//   }
+  next() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+    this.setState({ activeIndex: nextIndex });
+  }
 
-//   goToIndex(newIndex) {
-//     if (this.animating) return;
-//     this.setState({ activeIndex: newIndex });
-//   }	
+  previous() {
+    if (this.animating) return;
+    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+    this.setState({ activeIndex: nextIndex });
+  }
+
+  goToIndex(newIndex) {
+    if (this.animating) return;
+    this.setState({ activeIndex: newIndex });
+  }	
 	
-// 	// render() {
-// 	// 	const { activeIndex } = this.state;
+ render() {
+	const { activeIndex } = this.state;
 	
-// 	// 	const slides = items.map((item) => {
-// 	// 		return (
-// 	// 			<CarouselItem
-// 	// 				class="container"
-// 	// 				onExiting={this.onExiting}
-// 	// 				onExited={this.onExited}
-// 	// 				key={item.src}
-// 	// 			>
-// 	// 				<img src={item.src} alt={item.altText} />
-// 	// 				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-// 	// 			</CarouselItem>
-// 	// 		);
-// 	// 	});
+	const slides = items.map((item) => {
+ 		return (
+			<CarouselItem
+ 				class="container"
+ 				onExiting={this.onExiting}
+ 				onExited={this.onExited}
+				key={item.src}
+			>
+				<img src={item.src} alt={item.altText} />
+ 				<CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+ 			</CarouselItem>
+ 		);
+ 	});
 	
-// 	// 	return (
-// 	// 		<Carousel
-// 	// 			activeIndex={activeIndex}
-// 	// 			next={this.next}
-// 	// 			previous={this.previous}
-// 	// 		>
-// 	// 			<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-// 	// 			{slides}
-// 	// 			<CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-// 	// 			<CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-// 	// 		</Carousel>
-// 	// 	);
-// 	// }
-// }
+ 	return (
+ 		<Carousel
+			activeIndex={activeIndex}
+ 			next={this.next}
+ 			previous={this.previous}
+ 		>
+ 			<CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+ 			{slides}
+ 			<CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+ 			<CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+ 		</Carousel>
+ 	);
+}
+ }
 
-// export default Slider;
+ export default Slider;
 
 
 

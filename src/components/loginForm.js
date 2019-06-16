@@ -40,7 +40,7 @@ class Login extends Component{
 
 	toggelModalOpen(){
 			this.setState({
-					modalIsOpen: ! this.state.modalIsOpen
+				modalIsOpen: ! this.state.modalIsOpen
 			})
 	}
 
@@ -56,18 +56,24 @@ class Login extends Component{
 			password: this.state.password
 		}
 		console.log(user)
-		fetch('/userLogin', {
+		 fetch(`/userLogin`, {
 			method: 'GET',
-			body: JSON.stringify(user),
-		}).then((response) => response.json())
+			// body: JSON.stringify(user),
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			}
+		}).then((response) =>  
+		response.json())
 		.then((data) => {
 			if(data){
-			return this.setState({
-				message: 'Login Successful',
-				email: '',
-				password: '',
-			})
-		}
+				return this.setState({
+					message: 'Login Successful',
+					email: '',
+					password: '',
+				})
+			}
+		console.log(this.state.message)
 		}).catch(err => {
 			console.log(err)
 		})	
@@ -130,11 +136,12 @@ render(){
 					 >			 
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
-				 <Button><Link href="/">Cancel</Link></Button>
+				 <Button onClick={this.toggelModalClose}><Link>Cancel</Link></Button>
 				 </ModalFooter>
+				 <label>{this.state.message}</label>
 				 <Grid item>
-					<Link href="/signup" variant="body2">
-							{"Don't have an account? Sign Up"}
+					<Link href="/signup" variant="body4">
+					{"Don't have an account? Sign Up"}
  					</Link>
  				</Grid>
 				</DialogContent>

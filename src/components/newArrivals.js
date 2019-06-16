@@ -25,11 +25,11 @@ class NewArrivals extends Component{
 					return(
 				 <div class="row" className=".col-md-2">	
 					<div class="card" style={{width: "18rem", height: "30rem", float: "left", margin: "25px"}}>
-  					<img class="card-img-top" src={item.image} alt="Card image cap" />
+  					<img class="card-img-top" src={item.image}  style={{height: '15rem'}} alt="Card image cap" />
   					<div class="card-body">
     					<h5 class="card-title">{item.title}</h5>
 							<p class="card-text">{item.price} JD</p>
-    					<a href="#" class="btn btn-primary" style={{margin: '20%'}}>Add To Cart</a>
+    					<a class="btn btn-primary" style={{margin: '25%', color: "white"}}>Add To Cart</a>
   				</div>
 				</div>
 				</div>

@@ -72,7 +72,7 @@ signUp(){
 				email :'',
 				passwod: '',
 				username: '',
-				phoneNumber: ''
+				phoneNumber: '',
 			})
 			console.log(this.state.message)
 		}

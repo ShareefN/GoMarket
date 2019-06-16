@@ -61,5 +61,13 @@ router.route('/getHotDeals').get((req, res) => {
 	userCtrl.getHotdeals(req, res);
 })
 
+router.route('/slides').post((req, res) => {
+	userCtrl.addSlides(req, res);
+})
+
+router.route('/getSlides').get((req, res) => {
+	userCtrl.getSlides(req, res);
+})
+
 
 module.exports.router = router;

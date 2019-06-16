@@ -180,7 +180,7 @@ class Register extends Component{
 			<TextField
 				required
 				fullWidth
-				onChange={this.handelInputChange}
+				onChange={this.selectedFile}
 				type="file"
 				label="Image"
 				name="imgUrl"

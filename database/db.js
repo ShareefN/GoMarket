@@ -79,6 +79,13 @@ const Newarrivals = sequelize.define('newarrivals', {
   image: { type: Sequelize.STRING, required: true }
 })
 
+const Slider = sequelize.define('slides', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true }
+})
+
  Employee.hasMany(User);
  Cart.belongsTo(User)
 
@@ -93,3 +100,4 @@ const Newarrivals = sequelize.define('newarrivals', {
 module.exports.Gym = Gym;
 module.exports.Newarrivals = Newarrivals;
 module.exports.Hotdeals = Hotdeals;
+module.exports.Slider = Slider;
