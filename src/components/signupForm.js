@@ -19,7 +19,8 @@ class Signup extends Component {
         password: '',
         username: '',
         phoneNumber: '',
-		message: ''
+				message: '',
+				role: '',
        }
 		 this.handleInputChange = this.handleInputChange.bind(this);
 		 this.toggelModalOpen = this.toggelModalOpen.bind(this);
@@ -67,6 +68,7 @@ signUp(){
 		return response.json()
 	}).then(body => {
 		if (body){
+			console.log(body)
 			this.setState({
 				message: 'Signup Completed, Please Login',
 				email :'',

@@ -19,6 +19,7 @@ class Login extends Component{
 					email: '',
 					password: '',
 					message: '',
+					role: '',
 			}
 			this.toggelModalOpen = this.toggelModalOpen.bind(this);
 			this.handelInputChange = this.handelInputChange.bind(this);

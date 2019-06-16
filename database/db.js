@@ -87,7 +87,8 @@ const Slider = sequelize.define('slides', {
 })
 
  Employee.hasMany(User);
- Cart.belongsTo(User)
+ Cart.belongsTo(User);
+ Orders.hasMany(User);
 
  sequelize.sync();
 
