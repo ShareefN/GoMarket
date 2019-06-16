@@ -16,15 +16,16 @@ exports.getUser = function(req, res){
 	User.findOne({ where: {
 		email: req.body.email,
 	}})
-	console.log('hiii router')
 	.then(user => {
 		if(req.body.password === user.password){
 			const token = jwt.sign({
 				email: user.email,
 				userId: user.id
 			}, "JWT_KEY", {expiresIn: 4000});
+			console.log("HIII",token)
 			return res.send({token: token});
 		}else{
+			console.log("hello")
 			return res.send('Auth Failed')
 		}
 	})

@@ -57,8 +57,8 @@ class Login extends Component{
 		}
 		console.log(user)
 		 fetch(`/userLogin`, {
-			method: 'GET',
-			// body: JSON.stringify(user),
+			method: 'POST',
+			body: JSON.stringify(user),
 			headers: {
 				'Content-Type': 'application/json',
 				Accept: 'application/json'
@@ -67,6 +67,7 @@ class Login extends Component{
 		response.json())
 		.then((data) => {
 			if(data){
+				console.log(data)
 				return this.setState({
 					message: 'Login Successful',
 					email: '',

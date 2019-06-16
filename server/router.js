@@ -5,7 +5,7 @@ router.route('/userSignup').post((req, res) => {
 	userCtrl.createUser(req, res);
 })
 
-router.route('/userLogin').get((req, res) => {
+router.route('/userLogin').post((req, res) => {
 	userCtrl.getUser(req, res);
 })
 
