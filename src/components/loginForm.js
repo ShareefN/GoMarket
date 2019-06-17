@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
-import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
@@ -52,6 +49,13 @@ class Login extends Component{
 	}
 
 	login(){
+		function isEmpty(obj) {
+			for(var key in obj) {
+					if(obj.hasOwnProperty(key))
+							return false;
+			}
+			return true;
+	}
 		const user = {
 			email: this.state.email,
 			password: this.state.password
@@ -67,19 +71,22 @@ class Login extends Component{
 		}).then((response) =>  
 		response.json())
 		.then((data) => {
-			if(data){
-				console.log(data)
-				return this.setState({
+			if(isEmpty(data)) {
+					this.setState({
+						message: 'Invalid username or password, Please Signup',
+						email: '',
+						password: '',
+					})
+		} else {
+				 this.setState({
 					message: 'Login Successful',
 					email: '',
 					password: '',
-				})
-			}
-		console.log(this.state.message)
-		}).catch(err => {
+				})	
+		}
+	}).catch(err => {
 			console.log(err)
 		})	
-		console.log(this.token)		
 	}
 
 	classes(theme){
@@ -138,7 +145,7 @@ render(){
 					 >			 
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
-				 <Button onClick={this.toggelModalClose}><Link>Cancel</Link></Button>
+				 <Button onClose={this.toggelModalClose} href="/">Cancel</Button>
 				 </ModalFooter>
 				 <label>{this.state.message}</label>
 				 <Grid item>

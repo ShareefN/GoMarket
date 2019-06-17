@@ -60,7 +60,7 @@ signUp(){
 		phoneNumber: this.state.phoneNumber
 	}
 	// console.log(user)
-	fetch('http://127.0.0.1:6060/userSignup', {
+	fetch('/userSignup', {
 		method: 'POST',
 		body: JSON.stringify(user),
 		headers: { "Content-Type": "application/json" }
@@ -158,6 +158,7 @@ render(){
 			</Button>
 			<Button><Link href="/">Cancel</Link></Button>
 				 </ModalFooter>
+				 <label>{this.state.message}</label>
 				</DialogContent>
 				</Dialog>
 			</div>

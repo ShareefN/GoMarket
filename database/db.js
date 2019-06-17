@@ -42,6 +42,7 @@ sequelize.authenticate()
 
  const Orders = sequelize.define('order', {
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
+   location: { type: Sequelize.STRING, required: true }
  })
 
 const Electronics = sequelize.define('electronics', {
@@ -86,9 +87,9 @@ const Slider = sequelize.define('slides', {
   image: { type: Sequelize.STRING, required: true }
 })
 
- Employee.hasMany(User);
- Cart.belongsTo(User);
- Orders.hasMany(User);
+//  Employee.hasMany(User);
+//  Cart.belongsTo(User);
+//  Orders.belongsTo(User);
 
  sequelize.sync();
 

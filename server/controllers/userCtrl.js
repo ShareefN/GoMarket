@@ -17,17 +17,16 @@ exports.getUser = function(req, res){
 		email: req.body.email,
 	}})
 	.then(user => {
-		if(req.body.password === user.password){
+		if(req.body.email === user.email && req.body.password === user.password){
 			const token = jwt.sign({
 				email: user.email,
 				userId: user.id
 			}, "JWT_KEY", {expiresIn: 4000});
-			console.log("HIII",token)
-			return res.send({token: token});
-		}else{
-			console.log("hello")
-			return res.send('Auth Failed')
+			console.log(token)
+			 res.send({token: token});
 		}
+	}).catch(err => {
+		res.send(err)
 	})
 }
 

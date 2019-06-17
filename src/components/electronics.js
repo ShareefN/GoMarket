@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 class Electronics extends Component{
-    constructor(props){
-        super(props)
-        this.state = {
-           items: [] 
-        }
-    }
+	constructor(props){
+		super(props)
+		this.state = {
+		   items: [] 
+		}
+	}
 
 componentDidMount(){
 	fetch('/getelectronics').then(data => data.json())
@@ -17,8 +17,8 @@ componentDidMount(){
 	})
 }
 
-    render(){
-        return(
+	render(){
+		return(
 					<div class="container">
 					<h3>Electronics</h3>
 					{this.state.items.map(item => {
