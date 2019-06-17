@@ -19,7 +19,6 @@ sequelize.authenticate()
     username: { type: Sequelize.STRING, required: true, unique: true },
     password: { type: Sequelize.STRING, required: true },
     phoneNumber: { type: Sequelize.INTEGER, required: true, unique: true }
-    // created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW  }
  })
 
  const Employee = sequelize.define('employee', {
@@ -31,7 +30,6 @@ sequelize.authenticate()
     imgUrl: { type: Sequelize.STRING, required: false },
 		rating: { type: Sequelize.INTEGER, required: false },
     cv: { type: Sequelize.STRING, required: false },
-    // created: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
  })
 
  const Cart = sequelize.define('cart', {

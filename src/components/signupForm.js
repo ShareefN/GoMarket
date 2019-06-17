@@ -48,7 +48,7 @@ toggelModalOpen(){
 
 toggelModalClose(){
 	this.setState({
-		modalIsOpen: this.state.modalIsOpen
+		modalIsOpen: ! this.state.modalIsOpen
 	})
 }
 
@@ -101,6 +101,7 @@ classes(theme){
 render(){
 	return(
 		<div>
+			{this.state.modalIsOpen ? 
 				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup</DialogTitle>
 				<DialogContent>
@@ -156,11 +157,12 @@ render(){
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Signup</Link>
 			</Button>
-			<Button><Link href="/">Cancel</Link></Button>
+			<Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
 				 <label>{this.state.message}</label>
 				</DialogContent>
 				</Dialog>
+				: ' '}
 			</div>
 		)
 	}

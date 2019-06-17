@@ -13,7 +13,7 @@ router.route('/employeeSignUp').post((req, res) => {
 	userCtrl.createEmployee(req, res);
 })
 
-router.route('/emplyeeLogin').get((req, res) => {
+router.route('/employeeLogin').get((req, res) => {
 	userCtrl.getEmployee(req, res);
 })
 

@@ -36,7 +36,7 @@ class Cart extends Component{
 
 		toggelModalClose(){
 			this.setState({
-				modalIsOpen: this.state.modalIsOpen
+				modalIsOpen: ! this.state.modalIsOpen
 			})
 		}
 
@@ -67,6 +67,7 @@ class Cart extends Component{
     render(){
         return(
             <div>
+							{this.state.modalIsOpen ? 
 								<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
 								<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>Cart</DialogTitle>
 								<DialogContent>
@@ -87,14 +88,15 @@ class Cart extends Component{
                         {/* remove item btn */}
                       </TableRow>
                     </TableBody>
-                    <TableFooter>
-                      <Button type="submit" size="small" fullWidth color="primary" href="/" style={{marginLeft: '185%'}}>Checkout</Button>
-                      {/* <Button type="submit" size="small" fullWidth color="primary"  href="/" onClick={this.toggelModalClose}>Continue Shopping</Button> */}
+                    <TableFooter style={{textAlign: "center"}}>
+                      <Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button><br/>
+                      <Button type="submit" size="small" color="primary" href="/">Checkout</Button>
                     </TableFooter>
                   </Table>
 								</Paper>
 								</DialogContent>
 								</Dialog>
+								: ' '}
             </div>
         )
     }

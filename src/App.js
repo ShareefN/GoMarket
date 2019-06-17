@@ -51,16 +51,14 @@ class App extends Component{
     return(
       <div>
      <NavBar onSubmit={this.onSubmit} onSignup={this.onSignup} onRegister={this.onRegister} toggelCart={this.toggelCart}/>
-     {this.state.login ? <Login login={this.state.login} /> : null}
+     {this.state.login ? <Login onSignup={this.onSignup} login={this.state.login} /> : null}
      {this.state.signup ? <Signup signup={this.state.signup} /> : null}
      {this.state.register ? <Register register={this.state.register} /> : null}
      {this.state.cart ? <Cart cart={this.state.cart} /> : null}
         <Router>
-          <Route exact path="/registerForm" render={(props) => <Register />}/>
-          <Route exact path="/signup" render={(props) => <Signup />}/>
           {/* <Route exact path="/"  component={Slider}/> */}
           <Route exact path="/" render={(props) => <NewArrivals />}/>
-          {/* <Route exact path="/" render={(props) => <HotDeals />}/> */}
+          <Route exact path="/" render={(props) => <HotDeals />}/>
           <Route exact path="/groceries" render={(props) => <Groceries />} />
           <Route exact path="/electronics"  component={Electronics}/>
           <Route exact path="/exercise" render={(props) => <Exercise />}/>

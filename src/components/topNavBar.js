@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import { BrowserRouter, Router, Route } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Link from '@material-ui/core/Link';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -46,7 +46,7 @@ class NavBar extends Component{
       <Button color="inherit" onClick={() => {this.props.onSignup()}}>SignUp</Button>
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
     <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
-    <StyledBadge badgeContent={4} color="primary">
+    <StyledBadge badgeContent={1} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>
     </IconButton>

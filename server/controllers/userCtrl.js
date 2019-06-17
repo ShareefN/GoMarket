@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { User, Employee, carts, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider } = require('../../database/db');
 
@@ -44,15 +43,15 @@ exports.getEmployee = function(req, res){
 	Employee.findOne({ where: {
 		email: req.body.email,
 	}}).then(employee => {
-		if(req.bodt.password === employee.password){
+		if(req.body.password === employee.password){
 			const token = jwt.sign({
 				email: req.body.password,
 				employeeId: employee.id
 			}, "JWT_KEY", {expiresIn: 4000});
 			return res.send({token: token})
-		}else{
-			return res.send('Auth Failed')
 		}
+	}).catch(err => {
+		res.send(err)
 	})
 }
 

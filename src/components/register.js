@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { storage } from '../firebase/index'
 import { ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
-import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Dialog from '@material-ui/core/Dialog';
@@ -52,11 +51,11 @@ class Register extends Component{
 
 		toggelModalClose(){
 			this.setState({
-				modalIsOpen: this.state.modalIsOpen
+				modalIsOpen: ! this.state.modalIsOpen
 			})
 		}
 		
-		toggelSwitch(event){
+		toggelSwitch(){
 			this.setState({
 				checkedB: this.props.checkedB,
 			})
@@ -99,7 +98,6 @@ class Register extends Component{
 			})
 		}
 		
-
 		imageUpload(event){
 			const { image } = this.state;
 			const uploadImg = storage.ref(`images/${image.name}`).put(image);
@@ -134,8 +132,9 @@ class Register extends Component{
     render(){
         return(
 					<div>
+					{this.state.modalIsOpen ? 
 				<Dialog open={this.toggalModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
-				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>User Signup / Employee Register</DialogTitle>
+				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>Employee Register Form</DialogTitle>
 				<DialogContent>
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>
@@ -210,11 +209,12 @@ class Register extends Component{
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>
-			<Button><Link href = "/">Cancel</Link></Button>
+			<Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
 				 <label>{this.state.message}</label>
 				</DialogContent>
 				</Dialog>
+				: ' ' }
 			</div>
     
         )

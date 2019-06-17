@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Radio from '@material-ui/core/Radio';
 
 class Login extends Component{
 	constructor(props){
@@ -16,11 +17,12 @@ class Login extends Component{
 					email: '',
 					password: '',
 					message: '',
-					role: '',
+					role: false,
 			}
 			this.toggelModalOpen = this.toggelModalOpen.bind(this);
 			this.handelInputChange = this.handelInputChange.bind(this);
 			this.toggelModalClose = this.toggelModalClose.bind(this);
+			this.toggelButton = this.toggelButton.bind(this);
 			this.login = this.login.bind(this);
 	}
 
@@ -32,7 +34,7 @@ class Login extends Component{
 
 	componentWillMount(){
 		this.setState({
-			modalIsOpen: this.props.login
+			modalIsOpen: this.props.login,
 		})
 	}
 
@@ -44,7 +46,13 @@ class Login extends Component{
 
 	toggelModalClose(){
 		this.setState({
-			modalIsOpen: this.state.modalIsOpen
+			modalIsOpen: ! this.state.modalIsOpen
+		})
+	}
+
+	toggelButton(){
+		this.setState({
+			role: ! this.state.role,
 		})
 	}
 
@@ -61,19 +69,42 @@ class Login extends Component{
 			password: this.state.password
 		}
 		console.log(user)
+		console.log(this.state.role)
+		if(this.state.role === false){
 		 fetch(`/userLogin`, {
 			method: 'POST',
 			body: JSON.stringify(user),
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			}
+			headers: { 'Content-Type': 'application/json',	Accept: 'application/json' }
 		}).then((response) =>  
 		response.json())
 		.then((data) => {
 			if(isEmpty(data)) {
 					this.setState({
-						message: 'Invalid username or password, Please Signup',
+						message: 'Invalid email or password, Please Signup',
+						email: '',
+						password: '',
+					})
+		} else {
+				 this.setState({
+					message: 'Login Successful',
+					email: '',
+					password: '',
+				})	
+		}
+	}).catch(err => {
+			console.log(err)
+		})	
+	}else{
+		fetch(`/employeeLogin`, {
+			method: 'POST',
+			body: JSON.stringify(user),
+			headers: { 'Content-Type': 'application/json',	Accept: 'application/json' }
+		}).then((response) =>  
+		response.json())
+		.then((data) => {
+			if(isEmpty(data)) {
+					this.setState({
+						message: 'Invalid Employee email or password, Please Signup',
 						email: '',
 						password: '',
 					})
@@ -88,6 +119,7 @@ class Login extends Component{
 			console.log(err)
 		})	
 	}
+}
 
 	classes(theme){
 		return {
@@ -107,9 +139,17 @@ class Login extends Component{
 render(){
 		return(
 			<div>
-				<Dialog open={this.toggelModalOpen} onClose={this.toggelModalClose} aria-labelledby="form-dialog-title">
+				{this.state.modalIsOpen ?  
+				<Dialog open={this.toggelModalOpen} aria-labelledby="form-dialog-title">
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>Login</DialogTitle>
 				<DialogContent>
+					Employee
+				<Radio
+				onClick={this.toggelButton}
+        onChange={this.handelInputChange}
+        value="Employee"
+        name="role"
+      />
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>
 			<ModalBody>
@@ -145,16 +185,17 @@ render(){
 					 >			 
 	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
 	 			</Button>
-				 <Button onClose={this.toggelModalClose} href="/">Cancel</Button>
+				 <Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
 				 <label>{this.state.message}</label>
 				 <Grid item>
-					<Link href="/signup" variant="body4">
-					{"Don't have an account? Sign Up"}
- 					</Link>
+					<Button onClick={() => {this.props.onSignup()}}>
+					Don't have an account? Sign Up
+ 					</Button>
  				</Grid>
 				</DialogContent>
 				</Dialog>
+				: '' }
 			</div>
 			)
 	}
