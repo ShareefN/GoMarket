@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
-import { Redirect } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Dialog from '@material-ui/core/Dialog';
@@ -159,7 +157,7 @@ render(){
 			</Button>
 			<Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
-				 <label>{this.state.message}</label>
+				 <Button onClick={() => {this.props.onSubmit()}}>{this.state.message}</Button>
 				</DialogContent>
 				</Dialog>
 				: ' '}

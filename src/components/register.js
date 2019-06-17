@@ -98,9 +98,9 @@ class Register extends Component{
 			})
 		}
 		
-		imageUpload(event){
+		imageUpload(){
 			const { image } = this.state;
-			const uploadImg = storage.ref(`images/${image.name}`).put(image);
+			const uploadImg = storage.ref(`images/${image}`).put(image);
 
 			uploadImg.on("state_chaned", snapshot => {},
 			error => {
@@ -211,7 +211,7 @@ class Register extends Component{
 			</Button>
 			<Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
-				 <label>{this.state.message}</label>
+				 <Button onClick={() => {this.props.onSubmit()}}>{this.state.message}</Button>
 				</DialogContent>
 				</Dialog>
 				: ' ' }

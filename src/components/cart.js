@@ -6,7 +6,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableFooter from '@material-ui/core/TableFooter'
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
@@ -82,16 +81,19 @@ class Cart extends Component{
                     </TableHead>
                     <TableBody>
                       <TableRow>
-                        <TableCell>Milk</TableCell>
-                        <TableCell>1</TableCell>
-                        <TableCell>11 JD</TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell>JD</TableCell>
                         {/* remove item btn */}
                       </TableRow>
+											<TableRow>
+												<TableCell>Total: JD</TableCell>
+											</TableRow>
                     </TableBody>
-                    <TableFooter style={{textAlign: "center"}}>
-                      <Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button><br/>
-                      <Button type="submit" size="small" color="primary" href="/">Checkout</Button>
-                    </TableFooter>
+                    <TableRow style={{textAlign: "center"}}>
+                      <TableCell><Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button></TableCell>{" "}
+                      <TableCell><Button type="submit" size="small" color="primary" href="/">Checkout</Button></TableCell>
+                    </TableRow>
                   </Table>
 								</Paper>
 								</DialogContent>

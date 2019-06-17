@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User, Employee, carts, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider } = require('../../database/db');
+const { User, Employee, carts, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold } = require('../../database/db');
 
 exports.createUser = function(req, res){
 
@@ -153,6 +153,22 @@ exports.addSlides = function(req, res){
 
 exports.getSlides = function(req, res){
 	Slider.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.addHouseAppliences = function(req, res){
+	HouseHold.create(req.body).then(item => {
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getHousAppliences = function(req, res){
+	HouseHold.findAll().then(data => {
 		return res.send(data)
 	}).catch(err => {
 		console.log(err)

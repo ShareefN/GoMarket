@@ -8,11 +8,14 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
-
+// import {
+//   withRouter
+// } from 'react-router-dom'
 class Login extends Component{
 	constructor(props){
 			super(props)
 			this.state = {
+				login:false,
 					modalIsOpen: false,
 					email: '',
 					password: '',
@@ -90,7 +93,10 @@ class Login extends Component{
 					email: '',
 					password: '',
 				})	
-		}
+				this.props.onLoginClick(false)
+			}
+			console.log(this.props)
+			this.props.history.push('/electronics')
 	}).catch(err => {
 			console.log(err)
 		})	
@@ -114,8 +120,9 @@ class Login extends Component{
 					email: '',
 					password: '',
 				})	
-		}
-	}).catch(err => {
+				this.props.onLoginClick(true)
+			}
+		}).catch(err => {
 			console.log(err)
 		})	
 	}
@@ -183,11 +190,11 @@ render(){
 					 color="primary"
 					   onClick={this.login}
 					 >			 
-	 			<Link style={{color: 'white', textDecoration: 'none'}}>LogIn</Link>
+	 			Login
 	 			</Button>
 				 <Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
-				 <label>{this.state.message}</label>
+				 <label style={{color: 'red'}}>{this.state.message}</label>
 				 <Grid item>
 					<Button onClick={() => {this.props.onSignup()}}>
 					Don't have an account? Sign Up

@@ -69,5 +69,12 @@ router.route('/getSlides').get((req, res) => {
 	userCtrl.getSlides(req, res);
 })
 
+router.route('/houseAppliences').post((req, res) => {
+	userCtrl.addHouseAppliences(req, res);
+})
+
+router.route('/gethouseappliences').get((req, res) => {
+	userCtrl.getHousAppliences(req, res);
+})
 
 module.exports.router = router;

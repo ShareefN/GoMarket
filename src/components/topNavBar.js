@@ -61,6 +61,7 @@ class NavBar extends Component{
     centered >
      <Link href ="/" style={{textDecoration: 'none'}}><Tab label="Home" /></Link>
      <Link href ="/groceries" style={{textDecoration: 'none'}}><Tab label="Groceries" /></Link>
+     <Link href="/house" style={{textDecoration: 'none'}}><Tab label="House Appliences" /></Link>
      <Link href ="/electronics" style={{textDecoration: 'none'}}><Tab label="Elctronics" /></Link>
      <Link href ="/exercise" style={{textDecoration: 'none'}}><Tab label="Exercise / Workout"/></Link>
   </Tabs>
