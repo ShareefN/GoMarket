@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
-// import {
-//   withRouter
-// } from 'react-router-dom'
+
 class Login extends Component{
 	constructor(props){
 			super(props)
