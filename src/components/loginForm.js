@@ -80,7 +80,7 @@ class Login extends Component{
 		.then((data) => {
 			if(isEmpty(data)) {
 					this.setState({
-						message: 'Invalid email or password, Please Signup',
+						message: 'Invalid User email or password, Please Signup',
 						email: '',
 						password: '',
 					})
