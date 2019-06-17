@@ -21,6 +21,7 @@ class Login extends Component{
 					password: '',
 					message: '',
 					role: false,
+					error: '',
 			}
 			this.toggelModalOpen = this.toggelModalOpen.bind(this);
 			this.handelInputChange = this.handelInputChange.bind(this);
@@ -83,7 +84,7 @@ class Login extends Component{
 		.then((data) => {
 			if(isEmpty(data)) {
 					this.setState({
-						message: 'Invalid User email or password, Please Signup',
+						error: 'Invalid User email or password, Please Signup',
 						email: '',
 						password: '',
 					})
@@ -110,7 +111,7 @@ class Login extends Component{
 		.then((data) => {
 			if(isEmpty(data)) {
 					this.setState({
-						message: 'Invalid Employee email or password, Please Signup',
+						error: 'Invalid Employee email or password, Please Signup',
 						email: '',
 						password: '',
 					})
@@ -120,7 +121,6 @@ class Login extends Component{
 					email: '',
 					password: '',
 				})	
-				this.props.onLoginClick(true)
 			}
 		}).catch(err => {
 			console.log(err)
@@ -194,7 +194,8 @@ render(){
 	 			</Button>
 				 <Button onClick={this.toggelModalClose}>Cancel</Button>
 				 </ModalFooter>
-				 <label style={{color: 'red'}}>{this.state.message}</label>
+				 <label>{this.state.message}</label>
+				 <label style={{color: 'red'}}>{this.state.error}</label>
 				 <Grid item>
 					<Button onClick={() => {this.props.onSignup()}}>
 					Don't have an account? Sign Up
