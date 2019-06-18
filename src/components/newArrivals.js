@@ -20,7 +20,7 @@ class NewArrivals extends Component{
   render(){
     return(
 			<div class="container">
-				<h3 style={{textDecoration: 'underline'}}>New Arrivals</h3>
+				<h3 style={{textDecoration: 'underline', textAlign: 'center'}}>New Arrivals</h3>
 				{this.state.items.map(item => {
 					return(
 				 <div class="row" className=".col-md-2">	

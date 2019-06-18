@@ -152,6 +152,7 @@ render(){
 				variant="contained"
 				color="primary"
 				onClick={this.signUp}
+				disabled={!this.state.phoneNumber}
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Signup</Link>
 			</Button>

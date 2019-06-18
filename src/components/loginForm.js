@@ -93,8 +93,6 @@ class Login extends Component{
 				})	
 				this.props.onLoginClick(false)
 			}
-			console.log(this.props)
-			this.props.history.push('/electronics')
 	}).catch(err => {
 			console.log(err)
 		})	
@@ -185,7 +183,8 @@ render(){
 	 				fullWidth
 	 				variant="contained"
 					 color="primary"
-					   onClick={this.login}
+						 onClick={this.login}
+						 disabled={!this.state.password}
 					 >			 
 	 			Login
 	 			</Button>

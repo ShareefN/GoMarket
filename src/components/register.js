@@ -17,7 +17,8 @@ class Register extends Component{
             email: '',
             username: '',
             password: '',
-            phoneNumber: '',
+						phoneNumber: '',
+						image: '',
             imgUrl: '',
             cv: '',
             message: ''
@@ -100,7 +101,7 @@ class Register extends Component{
 		
 		imageUpload(){
 			const { image } = this.state;
-			const uploadImg = storage.ref(`images/${image}`).put(image);
+			const uploadImg = storage.ref(`images/${image.name}`).put(image);
 
 			uploadImg.on("state_chaned", snapshot => {},
 			error => {

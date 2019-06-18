@@ -22,7 +22,7 @@ class HotDeals extends Component{
 		return(
 
 			<div class="container">
-			<h3 style={{textDecoration: 'underline'}}>Hot Deals</h3>
+			<h3 style={{textDecoration: 'underline', textAlign: 'center'}}>Hot Deals</h3>
 			{this.state.items.map(item => {
 				return(
 				<div class="card" style={{width: '18rem', height: "30rem",  float: "left", margin: "35px"}}>

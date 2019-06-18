@@ -35,8 +35,8 @@ class NavBar extends Component{
 
     render(){
         return(
-    <div style={{marginBottom: '3%'}}>
-    <AppBar position="static">
+    <div style={{marginBottom: '10%'}}>
+    <AppBar position="fixed">
     <Toolbar>
       <Typography style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
         <Link href="/" style={{color: 'white', textDecoration: 'none'}}>GoMarket</Link>
@@ -46,13 +46,12 @@ class NavBar extends Component{
       <Button color="inherit" onClick={() => {this.props.onSignup()}}>SignUp</Button>
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
     <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
-    <StyledBadge badgeContent={1} color="primary">
+    <StyledBadge badgeContent={3} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>
     </IconButton>
       </Typography>
     </Toolbar>
-  </AppBar>
   <Paper className={this.classes.root}>
     <BrowserRouter>
   <Tabs
@@ -61,12 +60,13 @@ class NavBar extends Component{
     centered >
      <Link href ="/" style={{textDecoration: 'none'}}><Tab label="Home" /></Link>
      <Link href ="/groceries" style={{textDecoration: 'none'}}><Tab label="Groceries" /></Link>
-     <Link href="/house" style={{textDecoration: 'none'}}><Tab label="House Appliences" /></Link>
      <Link href ="/electronics" style={{textDecoration: 'none'}}><Tab label="Elctronics" /></Link>
+     <Link href="/house" style={{textDecoration: 'none'}}><Tab label="House Appliences" /></Link>
      <Link href ="/exercise" style={{textDecoration: 'none'}}><Tab label="Exercise / Workout"/></Link>
   </Tabs>
   </BrowserRouter>
 </Paper>
+</AppBar>
 </div>
     )
     }

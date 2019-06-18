@@ -92,9 +92,9 @@ const HouseHold = sequelize.define('households', {
   image: { type: Sequelize.STRING, required: true } 
 })
 
-//  Employee.hasMany(User);
-//  Cart.belongsTo(User);
-//  Orders.belongsTo(User);
+ Employee.hasMany(User);
+ Cart.belongsTo(User);
+ Orders.belongsTo(User);
 
  sequelize.sync();
 
