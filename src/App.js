@@ -12,6 +12,8 @@ import Groceries from './components/groceries';
 import Electronics from './components/electronics';
 import Exercise from './components/exercise';
 import HouseAppliences from './components/HouseAppliences';
+import Games from './components/games';
+import MapComponent from './components/map';
 
 class App extends Component{
   constructor(props){
@@ -74,7 +76,9 @@ class App extends Component{
           <Route exact path="/electronics"  component={Electronics}/>
           <Route exact path="/exercise" component={Exercise}/>
           <Route exact path="/house" component={HouseAppliences}/>
+          <Route exact path="/games" component={Games}/>
           <Route exact path="/login" component={Login}/>
+          <Route exact path="/map" component={MapComponent}/>
         </Router>
     </div>
     )

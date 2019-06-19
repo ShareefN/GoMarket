@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User, Employee, carts, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold } = require('../../database/db');
+const { User, Employee, carts, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold, Game } = require('../../database/db');
 
 exports.createUser = function(req, res){
 
@@ -65,14 +65,6 @@ exports.logout = function(req, res, next){
 			}
 		})
 	}
-}
-
-exports.addItemToCart = function(req, res){
-	carts.create(req.body).then(item => {
-		return res.send(item)
-	}).catch(err => {
-		console.log(err)
-	})
 }
 
 exports.Gym = function(req, res){
@@ -182,6 +174,29 @@ exports.addHouseAppliences = function(req, res){
 exports.getHousAppliences = function(req, res){
 	HouseHold.findAll().then(data => {
 		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.addGames = function(req, res){
+	Game.create(req.body).then(item => {
+		return res.send(item)
+	})
+}
+
+exports.getGames = function(req, res){
+	Game.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.addToCart = function(req, res){
+	console.log(req.body)
+	carts.create(req.body).then(item => {
+		return res.send(item)
 	}).catch(err => {
 		console.log(err)
 	})

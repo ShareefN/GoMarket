@@ -16,6 +16,8 @@ class Cart extends Component{
         this.state = {
 					modalIsOpen: false,
 					items: [],
+					totalQty: 0,
+					totalPrice: 0,
 				}
 				this.toggelModalOpen = this.toggelModalOpen.bind(this);
 				this.toggelModalClose = this.toggelModalClose.bind(this);

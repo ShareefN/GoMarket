@@ -92,6 +92,13 @@ const HouseHold = sequelize.define('households', {
   image: { type: Sequelize.STRING, required: true } 
 })
 
+const Game = sequelize.define('games', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  title: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+  image: { type: Sequelize.STRING, required: true } 
+})
+
  Employee.hasMany(User);
  Cart.belongsTo(User);
  Orders.belongsTo(User);
@@ -109,3 +116,4 @@ const HouseHold = sequelize.define('households', {
  module.exports.Hotdeals = Hotdeals;
  module.exports.Slider = Slider;
  module.exports.HouseHold = HouseHold;
+ module.exports.Game = Game

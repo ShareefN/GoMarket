@@ -67,11 +67,11 @@ router.route('/getHotDeals').get((req, res) => {
 	userCtrl.getHotdeals(req, res);
 })
 
-router.route('/slides').post((req, res) => {
+router.route('/specialOffers').post((req, res) => {
 	userCtrl.addSlides(req, res);
 })
 
-router.route('/getSlides').get((req, res) => {
+router.route('/getSpecialOffers').get((req, res) => {
 	userCtrl.getSlides(req, res);
 })
 
@@ -81,6 +81,19 @@ router.route('/houseAppliences').post((req, res) => {
 
 router.route('/gethouseappliences').get((req, res) => {
 	userCtrl.getHousAppliences(req, res);
+})
+
+router.route('/addGames').post((req, res) => {
+	userCtrl.addGames(req, res);
+})
+
+router.route('/getGames').get((req, res) => {
+	userCtrl.getGames(req, res);
+})
+
+// Adding items to cart API'S
+router.route('/addToCart').post((req, res) => {
+	userCtrl.addToCart(req, res);
 })
 
 module.exports.router = router;
