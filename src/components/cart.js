@@ -94,7 +94,7 @@ class Cart extends Component{
                     </TableBody>
                     <TableRow style={{textAlign: "center"}}>
                       <TableCell><Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button></TableCell>{" "}
-                      <TableCell><Button type="submit" size="small" color="primary" href="/">Checkout</Button></TableCell>
+                      <TableCell><Button type="submit" size="small" color="primary" href="/map">Checkout</Button></TableCell>
                     </TableRow>
                   </Table>
 								</Paper>
