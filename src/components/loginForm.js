@@ -91,6 +91,7 @@ class Login extends Component{
 					email: '',
 					password: '',
 				})	
+				localStorage.setItem('token', data.token)
 				this.props.onLoginClick(false)
 			}
 	}).catch(err => {
@@ -116,6 +117,7 @@ class Login extends Component{
 					email: '',
 					password: '',
 				})	
+				localStorage.setItem('token', data.token)
 			}
 		}).catch(err => {
 			console.log(err)

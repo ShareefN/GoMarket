@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const userCtrl = require('./controllers/userCtrl');
 
+// Signup, Signin, Logout API'S
 router.route('/userSignup').post((req, res) => {
 	userCtrl.createUser(req, res);
 })
@@ -17,6 +18,11 @@ router.route('/employeeLogin').post((req, res) => {
 	userCtrl.getEmployee(req, res);
 })
 
+router.route('/logout').get((req, res) => {
+	userCtrl.logout(req, res);
+})
+
+// Adding items to store API'S
 router.route('/addItemToCart').post((req, res) => {
 	userCtrl.addItemToCart(req, res);
 })

@@ -55,6 +55,18 @@ exports.getEmployee = function(req, res){
 	})
 }
 
+exports.logout = function(req, res, next){
+	if(req.session){
+		req.session.destroy(function(err){
+			if(err){
+				return next(err);
+			}else{
+				return console.log('loggedOut')
+			}
+		})
+	}
+}
+
 exports.addItemToCart = function(req, res){
 	carts.create(req.body).then(item => {
 		return res.send(item)

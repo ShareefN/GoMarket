@@ -24,6 +24,12 @@ const StyledBadge = withStyles((theme) => ({
   }))(Badge);
 
 class NavBar extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      
+    }
+  }
 
     classes(theme) {
         return{
