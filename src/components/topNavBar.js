@@ -68,7 +68,7 @@ class NavBar extends Component{
      <Link href ="/groceries" style={{textDecoration: 'none'}}><Tab label="Groceries" /></Link>
      <Link href ="/electronics" style={{textDecoration: 'none'}}><Tab label="Elctronics" /></Link>
      <Link href="/games" style={{textDecoration: 'none'}}><Tab label="Games"/></Link>
-     <Link href="/house" style={{textDecoration: 'none'}}><Tab label="House Appliences" /></Link>
+     <Link href="/house" style={{textDecoration: 'none'}}><Tab label="Home Appliences" /></Link>
      <Link href ="/exercise" style={{textDecoration: 'none'}}><Tab label="Exercise / Workout"/></Link>
   </Tabs>
   </BrowserRouter>

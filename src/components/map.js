@@ -62,7 +62,7 @@ export class MapComponent extends Component {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title" style={{textAlign: 'center'}}></DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title"></DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" style={{textAlign: 'center', color: 'black'}}><strong>
             Thank you for choosing to shop with GoMarket, Your order has been sent and our team will be there shortly</strong>
