@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Radio from '@material-ui/core/Radio';
+import Switch from '@material-ui/core/Switch';
 
 class Login extends Component{
 	constructor(props){
@@ -148,11 +149,12 @@ render(){
 				<DialogTitle id="form-dialog-title" style={{textAlign: 'center'}}>Login</DialogTitle>
 				<DialogContent>
 					Employee
-				<Radio
-				onClick={this.toggelButton}
+					<Switch
+        onClick={this.toggelButton}
         onChange={this.handelInputChange}
-        value="Employee"
-        name="role"
+				value="Emplyee"
+				color="primary"
+				name="role"
       />
 				<div className={this.classes.paper}>
 	 		<form className={this.classes.form} noValidate>

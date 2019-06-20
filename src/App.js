@@ -68,7 +68,6 @@ class App extends Component{
         {this.state.signup ? <Signup onSubmit={this.onSubmit} signup={this.state.signup} /> : null}
         {this.state.register ? <Register onSubmit={this.onSubmit} register={this.state.register} /> : null}
         {this.state.cart ? <Cart cart={this.state.cart} /> : null}
-     
         <Router>
           <Route exact path="/"  component={SpecialOffers}/>
           <Route exact path="/" component={NewArrivals}/>

@@ -7,7 +7,6 @@ class SpecialOffers extends Component{
 			items: [],
 			isSelected: [],
 		}
-	
 	}
 
 	componentDidMount(){
@@ -30,6 +29,10 @@ class SpecialOffers extends Component{
 			headers: { "Content-Type": "application/json" },
 		}).then(response => {
 			return response.json()
+		}).then(data => {
+			this.setState({
+				isSelected: data
+			})
 		}).catch(err => {
 			console.log(err)
 		})

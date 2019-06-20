@@ -66,7 +66,7 @@ export class MapComponent extends Component {
         <DialogTitle id="alert-dialog-slide-title"></DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description" style={{textAlign: 'center', color: 'black'}}><strong>
-            Thank you for choosing to shop with GoMarket, Your order has been sent and our team will be there shortly</strong>
+            Thank you for choosing to shop with GoMarket, Your order has been sent and our team will be delivering your order shortly</strong>
           </DialogContentText>
         </DialogContent>
         <DialogActions>
