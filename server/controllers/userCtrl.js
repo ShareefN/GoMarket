@@ -45,10 +45,11 @@ exports.getEmployee = function(req, res){
 	}}).then(employee => {
 		if(req.body.password === employee.password){
 			const token = jwt.sign({
-				email: req.body.password,
+				email: req.body.email,
 				employeeId: employee.id
 			}, "JWT_KEY", {expiresIn: 4000});
-			return res.send({token: token})
+			console.log(token)
+		  res.send({token: token})
 		}
 	}).catch(err => {
 		res.send(err)

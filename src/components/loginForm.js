@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { ModalBody, ModalFooter } from 'reactstrap'; 
+import createBrowserHistory from 'history/createBrowserHistory';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import Radio from '@material-ui/core/Radio';
 import Switch from '@material-ui/core/Switch';
 
 class Login extends Component{
@@ -61,8 +61,8 @@ class Login extends Component{
 	login(){
 		function isEmpty(obj) {
 			for(var key in obj) {
-					if(obj.hasOwnProperty(key))
-							return false;
+				if(obj.hasOwnProperty(key))
+				return false;
 			}
 			return true;
 	}
@@ -113,12 +113,15 @@ class Login extends Component{
 						password: '',
 					})
 		} else {
+			const history = createBrowserHistory()
 				 this.setState({
 					message: 'Login Successful',
 					email: '',
 					password: '',
 				})	
 				localStorage.setItem('token', data.token)
+				history.push('/orders')
+				window.location.reload()
 			}
 		}).catch(err => {
 			console.log(err)
@@ -152,7 +155,7 @@ render(){
 					<Switch
         onClick={this.toggelButton}
         onChange={this.handelInputChange}
-				value="Emplyee"
+				value="Employee"
 				color="primary"
 				name="role"
       />
