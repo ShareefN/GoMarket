@@ -195,9 +195,16 @@ exports.getGames = function(req, res){
 }
 
 exports.addToCart = function(req, res){
-	
 	Cart.create(req.body).then(item => {
 		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getFromCarts = function(req, res){
+	Cart.findAll().then(data => {
+		return res.send(data)
 	}).catch(err => {
 		console.log(err)
 	})

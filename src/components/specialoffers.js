@@ -32,11 +32,10 @@ class SpecialOffers extends Component{
 			this.setState({
 				isSelected: data
 			})
+			window.location.reload()
 		}).catch(err => {
 			console.log(err)
 		})})
-		
-		
 	}
 
 	render(){

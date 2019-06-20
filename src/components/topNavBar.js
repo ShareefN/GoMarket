@@ -27,8 +27,17 @@ class NavBar extends Component{
   constructor(props){
     super(props)
     this.state = {
-      items: [1, 2, 3, 8, 9, 17]
+      cartItems: []
     }
+  }
+
+  componentWillMount(){
+    fetch('/getCart').then(data => data.json())
+    .then(data => {
+      this.setState({
+        cartItems: data
+      })
+    })
   }
 
     classes(theme) {
@@ -52,7 +61,7 @@ class NavBar extends Component{
       <Button color="inherit" onClick={() => {this.props.onSignup()}}>SignUp</Button>
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
     <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
-    <StyledBadge badgeContent={this.state.items.length} color="primary">
+    <StyledBadge badgeContent={this.state.cartItems.length} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>
     </IconButton>

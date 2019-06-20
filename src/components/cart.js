@@ -29,6 +29,16 @@ class Cart extends Component{
       })
     }
 
+		componentDidMount(){
+			fetch('/getCart').then(data => data.json())
+			.then(data => {
+				this.setState({
+					items: data,
+					totalPrice: data.price
+				})
+			})
+		}
+
 		toggelModalOpen(){
 			this.setState({
 				modalIsOpen: ! this.state.modalIsOpen,
@@ -81,17 +91,21 @@ class Cart extends Component{
                         <TableCell>Price</TableCell>
                       </TableRow>
                     </TableHead>
-                    <TableBody>
+										{this.state.items.map(item => {
+											return (
+											<TableBody>
                       <TableRow>
-                        <TableCell></TableCell>
-                        <TableCell></TableCell>
-                        <TableCell>JD</TableCell>
+                        <TableCell>{item.name}</TableCell>
+												<TableCell>1</TableCell>
+                        <TableCell>{item.price}JD</TableCell>
                         {/* remove item btn */}
                       </TableRow>
-											<TableRow>
-												<TableCell>Total: JD</TableCell>
-											</TableRow>
+											{/* <TableRow> */}
+												{/* <TableCell>Total: {item.price}JD</TableCell> */}
+											{/* </TableRow> */}
                     </TableBody>
+											)
+											})}
                     <TableRow style={{textAlign: "center"}}>
                       <TableCell><Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button></TableCell>{" "}
                       <TableCell><Button type="submit" size="small" color="primary" href="/map">Checkout</Button></TableCell>

@@ -93,8 +93,11 @@ router.route('/getGames').get((req, res) => {
 
 // Adding items to cart API'S
 router.route('/addToCart').post((req, res) => {
-	console.log(req.body,"yasser")
 	userCtrl.addToCart(req, res);
+})
+
+router.route('/getCart').get((req, res) => {
+	userCtrl.getFromCarts(req, res)
 })
 
 router.route('/addToOrders').post((req, res) => {
