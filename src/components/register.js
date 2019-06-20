@@ -207,6 +207,7 @@ class Register extends Component{
 				variant="contained"
 				color="primary"
 				onClick={this.userRegister}
+				disabled={!this.state.phoneNumber}
 			>
 				<Link style={{color: 'white', textDecoration: 'none'}}>Apply</Link>
 			</Button>

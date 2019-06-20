@@ -43,7 +43,8 @@ export class MapComponent extends Component {
        <Marker onClick={this.onMarkerClick}
         name={'Current location'} />
       </Map>
-			<div class="container" style={{marginTop: '35%', width: '40%'}}>
+			<div class="container" style={{marginTop: '30%', width: '40%'}}>
+			<Button variant="contained" color="primary" style={{marginLeft: '35%', marginTop: '20px'}}>Send Location</Button>
 			<TextField
  				required
  				fullWidth

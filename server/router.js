@@ -96,4 +96,8 @@ router.route('/addToCart').post((req, res) => {
 	userCtrl.addToCart(req, res);
 })
 
+router.route('/addToOrders').post((req, res) => {
+	userCtrl.addToOrders(req, res)
+})
+
 module.exports.router = router;

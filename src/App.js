@@ -14,6 +14,7 @@ import Exercise from './components/exercise';
 import HouseAppliences from './components/HouseAppliences';
 import Games from './components/games';
 import MapComponent from './components/map';
+import Orders from './components/orders'
 
 class App extends Component{
   constructor(props){
@@ -79,6 +80,7 @@ class App extends Component{
           <Route exact path="/games" component={Games}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/map" component={MapComponent}/>
+          <Route exact path="/orders" component={Orders}/>
         </Router>
     </div>
     )

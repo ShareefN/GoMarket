@@ -201,3 +201,11 @@ exports.addToCart = function(req, res){
 		console.log(err)
 	})
 }
+
+exports.addToOrders = function(req, res){
+	Orders.create(req.body).then(item =>{
+		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}

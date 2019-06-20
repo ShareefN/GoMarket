@@ -23,7 +23,7 @@ class HouseAppliences extends Component{
             <h3>House Appliences</h3>
 			{this.state.items.map(item => {
 				return(
-				<div class="card" style={{width: '18rem', height: "30rem",  float: "left", margin: "25px"}}>
+				<div class="card" style={{width: '18rem', height: "28rem",  float: "left", margin: "25px"}}>
   			<img class="card-img-top" src={item.image} style={{height: '15rem'}} alt="Card image cap" />
   			<div class="card-body">
     		<h5 class="card-title">{item.title}</h5>
