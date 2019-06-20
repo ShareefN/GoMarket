@@ -27,7 +27,7 @@ class NavBar extends Component{
   constructor(props){
     super(props)
     this.state = {
-      
+      items: [1, 2, 3, 8, 9, 17]
     }
   }
 
@@ -52,7 +52,7 @@ class NavBar extends Component{
       <Button color="inherit" onClick={() => {this.props.onSignup()}}>SignUp</Button>
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
     <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
-    <StyledBadge badgeContent={3} color="primary">
+    <StyledBadge badgeContent={this.state.items.length} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>
     </IconButton>
@@ -60,10 +60,7 @@ class NavBar extends Component{
     </Toolbar>
   <Paper className={this.classes.root}>
     <BrowserRouter>
-  <Tabs
-    indicatorColor="primary"
-    textColor="primary"
-    centered >
+  <Tabs indicatorColor="primary" textColor="primary" centered >
      <Link href ="/" style={{textDecoration: 'none'}}><Tab label="Home" /></Link>
      <Link href ="/groceries" style={{textDecoration: 'none'}}><Tab label="Groceries" /></Link>
      <Link href ="/electronics" style={{textDecoration: 'none'}}><Tab label="Elctronics" /></Link>
