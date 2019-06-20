@@ -100,7 +100,6 @@ const Game = sequelize.define('games', {
 })
 
  Employee.hasMany(User);
- Cart.belongsTo(User);
  Orders.belongsTo(User);
 
  sequelize.sync();

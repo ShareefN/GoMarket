@@ -19,13 +19,12 @@ class SpecialOffers extends Component{
 	}
 
 	itemSelected(index){
+		var that=this
 		this.setState({
 			isSelected: this.state.items[index]
-		}, ()=>console.log(this.state.isSelected))
-		
-		fetch('/addToCart', {
+		},()=>{fetch('/addToCart', {
 			method: 'POST',
-			body: JSON.stringify(this.state.isSelected),
+			body: JSON.stringify({name:that.state.isSelected.title,price:that.state.isSelected.price}),
 			headers: { "Content-Type": "application/json" },
 		}).then(response => {
 			return response.json()
@@ -35,7 +34,9 @@ class SpecialOffers extends Component{
 			})
 		}).catch(err => {
 			console.log(err)
-		})
+		})})
+		
+		
 	}
 
 	render(){
