@@ -210,7 +210,7 @@ exports.getFromCarts = function(req, res){
 	})
 }
 
-exports.addToOrders = function(req, res){
+exports.getToOrders = function(req, res){
 	Orders.create(req.body).then(item =>{
 		return res.send(item)
 	}).catch(err => {

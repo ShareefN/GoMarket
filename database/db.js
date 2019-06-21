@@ -40,7 +40,9 @@ sequelize.authenticate()
 
  const Orders = sequelize.define('order', {
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
-   location: { type: Sequelize.STRING, required: true }
+   name: { type: Sequelize.STRING, required: true },
+   price: { type: Sequelize.STRING, required: true },
+   location: { type: Sequelize.STRING, required: false }
  })
 
 const Electronics = sequelize.define('electronics', {

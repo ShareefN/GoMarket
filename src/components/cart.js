@@ -34,7 +34,7 @@ class Cart extends Component{
 			.then(data => {
 				this.setState({
 					items: data,
-					totalPrice: data.price
+					totalPrice: data.price,
 				})
 			})
 		}
@@ -100,9 +100,9 @@ class Cart extends Component{
                         <TableCell>{item.price}JD</TableCell>
                         {/* remove item btn */}
                       </TableRow>
-											{/* <TableRow> */}
-												{/* <TableCell>Total: {item.price}JD</TableCell> */}
-											{/* </TableRow> */}
+											{/* <TableRow>
+												<TableCell>{this.state.totalPrice}</TableCell>
+											</TableRow> */}
                     </TableBody>
 											)
 											})}

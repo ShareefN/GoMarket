@@ -100,8 +100,4 @@ router.route('/getCart').get((req, res) => {
 	userCtrl.getFromCarts(req, res)
 })
 
-router.route('/addToOrders').post((req, res) => {
-	userCtrl.addToOrders(req, res)
-})
-
 module.exports.router = router;

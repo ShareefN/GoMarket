@@ -40,7 +40,7 @@ class NavBar extends Component{
     })
   }
 
-    classes(theme) {
+    classes() {
         return{
         root: {
           flexGrow: 1,
