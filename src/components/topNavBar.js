@@ -16,7 +16,7 @@ import IconButton from '@material-ui/core/IconButton';
 const StyledBadge = withStyles((theme) => ({
     badge: {
       top: '50%',
-      right: -3,
+      right: '-3',
       border: `2px solid ${
         theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
       }`,
