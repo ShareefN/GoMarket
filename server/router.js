@@ -97,7 +97,20 @@ router.route('/addToCart').post((req, res) => {
 })
 
 router.route('/getCart').get((req, res) => {
-	userCtrl.getFromCarts(req, res)
+	userCtrl.getCart(req, res);
+})
+
+
+router.route('/addToOrders').post((req, res) => {
+	userCtrl.addToOrders(req, res)
+})
+
+router.route('/getOrder').get((req, res) => {
+	userCtrl.getOrder(req, res)
+})
+
+router.route('/removeItem').delete((req, res) => {
+	userCtrl.deleteFromCart(req, res)
 })
 
 module.exports.router = router;

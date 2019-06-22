@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
 class Cart extends Component{
     constructor(props){
@@ -16,9 +17,8 @@ class Cart extends Component{
         this.state = {
 					modalIsOpen: false,
 					items: [],
-					totalQty: 0,
-					totalPrice: 0,
-				}
+					itemsSelected: [],
+			}
 				this.toggelModalOpen = this.toggelModalOpen.bind(this);
 				this.toggelModalClose = this.toggelModalClose.bind(this);
     }
@@ -34,10 +34,25 @@ class Cart extends Component{
 			.then(data => {
 				this.setState({
 					items: data,
-					totalPrice: data.price,
 				})
 			})
 		}
+
+		cartItems(){
+			var that = this
+			this.setState({
+				itemsSelected: this.state.items
+			}, () => {fetch('/addToOrders', {
+				method: 'POST',
+				body: JSON.stringify(that.state.itemsSelected),
+				headers: { "Content-Type": "application/json" },
+			}).then(data => {
+				return data.json()
+			})
+		}).catch(err => {
+			console.log(err)
+		})
+		}	
 
 		toggelModalOpen(){
 			this.setState({
@@ -93,22 +108,22 @@ class Cart extends Component{
                     </TableHead>
 										{this.state.items.map(item => {
 											return (
+												<Fragment>
 											<TableBody>
                       <TableRow>
                         <TableCell>{item.name}</TableCell>
 												<TableCell>1</TableCell>
-                        <TableCell>{item.price}JD</TableCell>
+                        <TableCell>{item.price} JD</TableCell>
+												<TableCell><DeleteForeverIcon onClick={this.deleteItem} /></TableCell>
                         {/* remove item btn */}
                       </TableRow>
-											{/* <TableRow>
-												<TableCell>{this.state.totalPrice}</TableCell>
-											</TableRow> */}
                     </TableBody>
-											)
-											})}
+										</Fragment>
+										)
+										})}
                     <TableRow style={{textAlign: "center"}}>
                       <TableCell><Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button></TableCell>{" "}
-                      <TableCell><Button type="submit" size="small" color="primary" href="/map">Checkout</Button></TableCell>
+                      <TableCell><Button type="submit" size="small" color="primary" href="/map" onClick={this.cartItems.bind(this)}>Checkout</Button></TableCell>
                     </TableRow>
                   </Table>
 								</Paper>

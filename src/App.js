@@ -24,7 +24,8 @@ class App extends Component{
       signup: false,
       register: false,
       cart: false,
-      isLogedin: false
+      isLogedin: false,
+      logout: false
     }
   }    
 
@@ -46,11 +47,12 @@ class App extends Component{
     })
   }
 
-    toggelCart = () => {
-      this.setState({
-        cart: ! this.state.cart,
-      })
-    }
+  toggelCart = () => {
+    this.setState({
+      cart: true,
+    })
+    console.log(this.state.cart)
+  }
   
   onLoginClick = () => { 
     this.setState({
@@ -60,11 +62,18 @@ class App extends Component{
     })
   }
 
+  onLogout = () => {
+    localStorage.clear();
+    this.setState({
+      logout: ! this.state.logout
+    })
+  }
+
   render(){
     return(
       <div>
-        <NavBar onSubmit={this.onSubmit} onSignup={this.onSignup} onRegister={this.onRegister} toggelCart={this.toggelCart}/>
-        {this.state.login ? <Login onSignup={this.onSignup} login={this.state.login} onLoginClick={this.onLoginClick}/> : null}
+        <NavBar onSubmit={this.onSubmit} onSignup={this.onSignup} onRegister={this.onRegister} toggelCart={this.toggelCart} onLogout={this.onLogout}/>
+        {this.state.login ? <Login onSignup={this.onSignup} login={this.state.login} onLoginClick={this.onLoginClick} isLogedin={this.state.isLogedin}/> : null}
         {this.state.signup ? <Signup onSubmit={this.onSubmit} signup={this.state.signup} /> : null}
         {this.state.register ? <Register onSubmit={this.onSubmit} register={this.state.register} /> : null}
         {this.state.cart ? <Cart cart={this.state.cart} /> : null}

@@ -202,7 +202,7 @@ exports.addToCart = function(req, res){
 	})
 }
 
-exports.getFromCarts = function(req, res){
+exports.getCart = function(req, res){
 	Cart.findAll().then(data => {
 		return res.send(data)
 	}).catch(err => {
@@ -210,9 +210,18 @@ exports.getFromCarts = function(req, res){
 	})
 }
 
-exports.getToOrders = function(req, res){
-	Orders.create(req.body).then(item =>{
+exports.addToOrders = function(req, res){
+	console.log(req.body, 'sss')
+	Orders.create(req.body).then(item => {
 		return res.send(item)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getOrder = function(req, res){
+	Orders.findAll().then(data => {
+		return res.send(data)
 	}).catch(err => {
 		console.log(err)
 	})

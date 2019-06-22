@@ -35,6 +35,12 @@ export class MapComponent extends Component {
 		})
 	}
 
+	clearCart(){
+		fetch('/removeItem', {
+			
+		})
+	}
+
   render() {
     return (
 			<div>
@@ -48,8 +54,7 @@ export class MapComponent extends Component {
 			<TextField
  				required
  				fullWidth
-				 label="Comments"
-				 placeholder="Optional"
+				 label="Optional Comments"
  				name="text"
 				autoFocus
  			/>

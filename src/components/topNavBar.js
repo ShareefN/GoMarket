@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import { BrowserRouter } from "react-router-dom";
 import Link from '@material-ui/core/Link';
@@ -56,15 +56,23 @@ class NavBar extends Component{
       <Typography style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>
         <Link href="/" style={{color: 'white', textDecoration: 'none'}}>GoMarket</Link>
       </Typography>
-      <Typography className={this.classes.title} style={{marginLeft: "75%", position: 'absolute'}}>
+      <Typography className={this.classes.title} style={{marginLeft: "80%", position: 'absolute'}}>  
+      {!localStorage.getItem("token") ? <>
       <Button color="inherit" onClick={() => {this.props.onSubmit()}}>LogIn</Button>
       <Button color="inherit" onClick={() => {this.props.onSignup()}}>SignUp</Button>
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
-    <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
+      </>
+    : <Fragment> 
+    <Link href="/" color="inherit" style={{color: 'white', textDecoration: 'none'}}>
+      <Button color="inherit" onClick={() => {this.props.onLogout()}}>Logout</Button>
+    </Link>
+      <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
     <StyledBadge badgeContent={this.state.cartItems.length} color="primary">
     <ShoppingCartIcon />
   </StyledBadge>
     </IconButton>
+    </Fragment>
+     }
       </Typography>
     </Toolbar>
   <Paper className={this.classes.root}>

@@ -35,14 +35,13 @@ sequelize.authenticate()
  const Cart = sequelize.define('cart', {
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
    name: { type: Sequelize.STRING, required: true },
-   price: { type: Sequelize.INTEGER, required: true }
+   price: { type: Sequelize.INTEGER, required: true },
  })
 
  const Orders = sequelize.define('order', {
    id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
    name: { type: Sequelize.STRING, required: true },
    price: { type: Sequelize.STRING, required: true },
-   location: { type: Sequelize.STRING, required: false }
  })
 
 const Electronics = sequelize.define('electronics', {
