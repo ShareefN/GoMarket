@@ -63,9 +63,7 @@ class NavBar extends Component{
       <Button color="inherit" onClick={() => {this.props.onRegister()}}>Register</Button>
       </>
     : <Fragment> 
-    <Link href="/" color="inherit" style={{color: 'white', textDecoration: 'none'}}>
-      <Button color="inherit" onClick={() => {this.props.onLogout()}}>Logout</Button>
-    </Link>
+      <Button href="/" color="inherit" style={{color: 'white', textDecoration: 'none'}} onClick={() => {this.props.onLogout()}}>Logout</Button>
       <IconButton aria-label="Cart" color="inherit" onClick={() => {this.props.toggelCart()}}>
     <StyledBadge badgeContent={this.state.cartItems.length} color="primary">
     <ShoppingCartIcon />
