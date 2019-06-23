@@ -18,14 +18,36 @@ export class MapComponent extends Component {
 		super(props)
 		this.state = {
 			text: '',
+			confirm: '',
 			modalIsOpen: false,
 		}
+		this.handelInputChange = this.handelInputChange.bind(this);
 		this.handleClickOpen = this.handleClickOpen.bind(this);
+		this.snedMessage = this.snedMessage.bind(this);
+		this.deleteCart = this.deleteCart.bind(this);
 	}
 
 	handelInputChange(event){
 		this.setState({
 			[event.target.name]: event.target.value
+		})
+	}
+
+	snedMessage(){
+		console.log(this.state.text)
+		fetch('/sendMessage', {
+			method: 'POST',
+			body: JSON.stringify({message: this.state.text}),
+			headers: { "Content-Type": "application/json" },
+		}).then(message => {
+			return message.json()
+		}).then(body => {
+			this.setState({
+				confirm: 'Message Sent!'
+			})
+		})
+		.catch(err => {
+			console.log(err)
 		})
 	}
 
@@ -35,9 +57,13 @@ export class MapComponent extends Component {
 		})
 	}
 
-	clearCart(){
+	deleteCart(){
 		fetch('/removeItem', {
-			
+			method: 'DELETE'
+		}).then(data => {
+			console.log(data, 'deleted')
+		}).catch(err => {
+			console.log(err)
 		})
 	}
 
@@ -54,10 +80,14 @@ export class MapComponent extends Component {
 			<TextField
  				required
  				fullWidth
-				 label="Optional Comments"
- 				name="text"
-				autoFocus
+				label="Optional Comments"
+				 name="text"
+				 onChange={this.handelInputChange}
  			/>
+			 <div>
+			 <label>{this.state.confirm}</label>
+			 </div>
+			 <Button variant="contained" color="primary" style={{marginLeft: '35%', marginTop: '20px'}} onClick={this.snedMessage}>Send Message</Button>
 			 <Button variant="contained" color="primary" style={{marginLeft: '35%', marginTop: '20px'}} onClick={this.handleClickOpen}>Request Order</Button>
 			</div>
 			<div>
@@ -75,7 +105,7 @@ export class MapComponent extends Component {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button href="/" color="primary">
+          <Button href="/" color="primary" onClick={this.deleteCart}>
             Home
           </Button>
         </DialogActions>

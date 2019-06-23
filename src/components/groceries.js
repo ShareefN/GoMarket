@@ -41,7 +41,7 @@ class Groceries extends Component{
     
     render(){
         return(
-            <div class="container">
+          <div class="container">
             <h3>Groceries</h3>
 			{this.state.items.map((item, index) => {
 				return(
@@ -55,7 +55,7 @@ class Groceries extends Component{
 				</div>
 				)
 			})}
-            </div>
+        </div>
         )
     }
 }

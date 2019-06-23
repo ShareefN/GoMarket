@@ -50,7 +50,7 @@ class SpecialOffers extends Component{
   					<div class="card-body">
     					<h5 class="card-title">{item.title}</h5>
 							<p class="card-text">{item.price} JD</p>
-    					<a class="btn btn-primary" style={{margin: '25%', color: "white"}} onClick={this.itemSelected.bind(this, index)}>Add To Cart</a>
+    					<a class="btn btn-primary" style={{margin: '25%', color: "white"}} disabled={!localStorage.getItem('token')} onClick={this.itemSelected.bind(this, index)}>Add To Cart</a>
   				</div>
 				</div>
 				</div>

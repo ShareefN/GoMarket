@@ -6,6 +6,10 @@ router.route('/userSignup').post((req, res) => {
 	userCtrl.createUser(req, res);
 })
 
+router.route('/getUser').get((req, res) => {
+	userCtrl.user(req, res)
+})
+
 router.route('/userLogin').post((req, res) => {
 	userCtrl.getUser(req, res);
 })
@@ -100,6 +104,18 @@ router.route('/getCart').get((req, res) => {
 	userCtrl.getCart(req, res);
 })
 
+router.route('/sendMessage').post((req, res) => {
+	console.log(req.body)
+	userCtrl.sendMessage(req, res);
+})
+
+router.route('/getMessages').get((req, res) => {
+	userCtrl.getMessages(req, res);
+})
+
+router.route('/deleteMessages').delete((req, res) => {
+	userCtrl.deleteMessgages(req, res);
+})
 
 router.route('/addToOrders').post((req, res) => {
 	userCtrl.addToOrders(req, res)
@@ -110,7 +126,11 @@ router.route('/getOrder').get((req, res) => {
 })
 
 router.route('/removeItem').delete((req, res) => {
-	userCtrl.deleteFromCart(req, res)
+	userCtrl.deleteCart(req, res)
+})
+
+router.route('/removeOrders').delete((req, res) => {
+	userCtrl.deleteOrders(req, res)
 })
 
 module.exports.router = router;

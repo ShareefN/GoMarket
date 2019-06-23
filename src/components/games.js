@@ -47,7 +47,7 @@ class Games extends Component{
 						return(
 					 <div class="row" className=".col-md-2">	
 						<div class="card" style={{width: "18rem", height: "30rem", float: "left", margin: "35px"}}>
-							<img class="card-img-top" src={item.image}  style={{height: '15rem'}} alt="Card image cap" />
+							<img class="card-img-top" src={item.image}  style={{height: '15rem', width: '17rem', borderRadius: '10%'}} alt="Card image cap" />
 							<div class="card-body">
 								<h5 class="card-title">{item.title}</h5>
 								<p class="card-text">{item.price} JD</p>

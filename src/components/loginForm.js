@@ -80,6 +80,7 @@ class Login extends Component{
 		}).then((response) =>  
 		response.json())
 		.then((data) => {
+			console.log(data)
 			if(isEmpty(data)) {
 					this.setState({
 						error: 'Invalid User email or password, Please Signup',

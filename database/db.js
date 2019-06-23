@@ -39,9 +39,14 @@ sequelize.authenticate()
  })
 
  const Orders = sequelize.define('order', {
-   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }, 
-   name: { type: Sequelize.STRING, required: true },
-   price: { type: Sequelize.STRING, required: true },
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  name: { type: Sequelize.STRING, required: true },
+  price: { type: Sequelize.INTEGER, required: true },
+ })
+
+ const Messages = sequelize.define('message', {
+  id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+  message: { type: Sequelize.STRING, required: false },
  })
 
 const Electronics = sequelize.define('electronics', {
@@ -76,7 +81,7 @@ const Newarrivals = sequelize.define('newarrivals', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   title: { type: Sequelize.STRING, required: true },
   price: { type: Sequelize.INTEGER, required: true },
-  image: { type: Sequelize.STRING, required: true }
+  image: { type: Sequelize.STRING, required: true },
 })
 
 const Slider = sequelize.define('slides', {
@@ -92,7 +97,7 @@ const HouseHold = sequelize.define('households', {
   price: { type: Sequelize.INTEGER, required: true },
   image: { type: Sequelize.STRING, required: true } 
 })
-
+ 
 const Game = sequelize.define('games', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
   title: { type: Sequelize.STRING, required: true },
@@ -100,15 +105,13 @@ const Game = sequelize.define('games', {
   image: { type: Sequelize.STRING, required: true } 
 })
 
- Employee.hasMany(User);
- Orders.belongsTo(User);
-
  sequelize.sync();
 
  module.exports.User = User;
  module.exports.Employee = Employee;
  module.exports.Cart = Cart;
  module.exports.Orders = Orders;
+ module.exports.Messages = Messages;
  module.exports.Electronics = Electronics;
  module.exports.Groceries = Groceries;
  module.exports.Gym = Gym;

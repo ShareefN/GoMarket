@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { User, Employee, Cart, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold, Game } = require('../../database/db');
+const { User, Employee, Cart, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold, Game, Messages } = require('../../database/db');
 
 exports.createUser = function(req, res){
 
@@ -56,16 +56,12 @@ exports.getEmployee = function(req, res){
 	})
 }
 
-exports.logout = function(req, res, next){
-	if(req.session){
-		req.session.destroy(function(err){
-			if(err){
-				return next(err);
-			}else{
-				return console.log('loggedOut')
-			}
-		})
-	}
+exports.user = function(req, res){
+	User.findAll().then(data => {
+		return res.send(data)
+	}).catch(err => {
+		console.log(err)
+	})
 }
 
 exports.Gym = function(req, res){
@@ -210,8 +206,40 @@ exports.getCart = function(req, res){
 	})
 }
 
+exports.deleteCart = function(req, res){
+	Cart.destroy({truncate: true}).then(data => {
+		console.log(data, 'deleted')
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.sendMessage = function(req, res){
+	Messages.create(req.body).then(message => {
+		return res.send(message)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.getMessages = function(req, res){
+	Messages.findAll().then(message => {
+		return res.send(message)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
+exports.deleteMessgages = function(req, res){
+	Messages.destroy({truncate: true}).then(data => {
+		console.log(data)
+	}).catch(err => {
+		console.log(err)
+	})
+}
+
 exports.addToOrders = function(req, res){
-	console.log(req.body, 'sss')
+	console.log(req.body, 'ctrl')
 	Orders.create(req.body).then(item => {
 		return res.send(item)
 	}).catch(err => {
@@ -224,5 +252,13 @@ exports.getOrder = function(req, res){
 		return res.send(data)
 	}).catch(err => {
 		console.log(err)
+	})
+}
+
+exports.deleteOrders = function(req, res){
+	Orders.destroy({truncate: true}).then(data => {
+		console.log(data, 'deleted')
+	}).catch(err => {
+		console.lof(err)
 	})
 }
