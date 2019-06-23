@@ -119,7 +119,7 @@ class Orders extends Component{
 						<DialogContent>
 						<DialogTitle id="alert-dialog-slide-title"></DialogTitle>
           <DialogContentText id="alert-dialog-slide-description" style={{textAlign: 'center', color: 'black'}}>
-            Thank you delivering on time, Be ready to accept new orders
+            Thank you for delivering on time, Be ready to accept new orders
           </DialogContentText>
         </DialogContent>
         <DialogActions>
