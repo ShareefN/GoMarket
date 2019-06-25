@@ -26,6 +26,10 @@ router.route('/logout').get((req, res) => {
 	userCtrl.logout(req, res);
 })
 
+router.route('/sendMsg').post((req, res) => {
+	userCtrl.sendMsg(req, res)
+})
+
 // Adding items to store API'S
 router.route('/addItemToCart').post((req, res) => {
 	userCtrl.addItemToCart(req, res);

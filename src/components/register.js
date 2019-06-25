@@ -176,27 +176,6 @@ class Register extends Component{
 				placeholder="Mobile Number"
 				autoFocus
 			/>
-			Image
-			<TextField
-				required
-				fullWidth
-				onChange={this.selectedFile}
-				type="file"
-				label="Image"
-				name="imgUrl"
-				autoFocus
-				onClick={this.imageUpload}
-			/>
-			CV
-			<TextField
-				required
-				fullWidth
-				onChange={this.handelInputChange}
-				type="file"
-				label="CV"
-				name="cv"
-				autoFocus
-			/>
 			</ModalBody>
 			</form>
 		</div>

@@ -19,26 +19,33 @@ class Games extends Component{
 		}
 
 		itemSelected(index){
-			var that = this;
+			var that = this
 			this.setState({
 				isSelected: this.state.items[index]
-			}, () => {fetch('/addToCart', {
+			},() => {fetch('/addToCart', {
 				method: 'POST',
 				body: JSON.stringify({name: that.state.isSelected.title, price: that.state.isSelected.price}),
-			 headers: { "Content-Type": "application/json" },
-			}).then(data => {
-				return data.json()
+				headers: { "Content-Type": "application/json" },
+			}).then(response => {
+				fetch('/addToOrders', {
+					method: 'POST',
+					body: JSON.stringify({name: that.state.isSelected.title, price: that.state.isSelected.price}),
+					headers: { "Content-Type": "application/json" },
+				}).then(data => {
+					return data.json()
+				}).catch(err => {
+					console.log(err)
+				})
+				return response.json()
 			}).then(data => {
 				this.setState({
 					isSelected: data
 				})
 				window.location.reload()
-			})
-		}).catch(err => {
-			console.log(err)
-		})
+			}).catch(err => {
+				console.log(err)
+			})})
 		}
-
 		render(){
 			return(
 				<div class="container">
@@ -46,7 +53,7 @@ class Games extends Component{
 					{this.state.items.map((item, index) => {
 						return(
 					 <div class="row" className=".col-md-2">	
-						<div class="card" style={{width: "18rem", height: "30rem", float: "left", margin: "35px"}}>
+						<div class="card" style={{width: "18rem", height: "29rem", float: "left", margin: "35px"}}>
 							<img class="card-img-top" src={item.image}  style={{height: '15rem', width: '17rem', borderRadius: '10%'}} alt="Card image cap" />
 							<div class="card-body">
 								<h5 class="card-title">{item.title}</h5>

@@ -140,6 +140,7 @@ render(){
 				label="Mobile Number"
 				name="phoneNumber"
 				placeholder="Mobile Number"
+				type='tel'
 				autoFocus
 			/>
 			</ModalBody>

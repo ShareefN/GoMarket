@@ -34,7 +34,6 @@ export class MapComponent extends Component {
 	}
 
 	snedMessage(){
-		console.log(this.state.text)
 		fetch('/sendMessage', {
 			method: 'POST',
 			body: JSON.stringify({message: this.state.text}),

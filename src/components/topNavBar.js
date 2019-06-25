@@ -50,7 +50,7 @@ class NavBar extends Component{
 
     render(){
         return(
-    <div style={{marginBottom: '10%'}}>
+    <div style={{marginBottom: '8%'}}>
     <AppBar position="fixed">
     <Toolbar>
       <Typography style={{color: "white", textDecoration:"none", display: 'inline-block', paddingTop: '.3125rem', paddingBottom: '.3125rem', marginRight: '1rem', fontSize: '1.25rem', lineHeight: 'inherit', whiteSpace: 'nowrap'}}>

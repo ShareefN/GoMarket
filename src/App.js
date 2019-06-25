@@ -14,7 +14,8 @@ import Exercise from './components/exercise';
 import HouseAppliences from './components/HouseAppliences';
 import Games from './components/games';
 import MapComponent from './components/map';
-import Orders from './components/orders'
+import Orders from './components/orders';
+import Slider from './components/slides'
 
 class App extends Component{
   constructor(props){
@@ -78,6 +79,7 @@ class App extends Component{
         {this.state.register ? <Register onSubmit={this.onSubmit} register={this.state.register} /> : null}
         {this.state.cart ? <Cart cart={this.state.cart} /> : null}
         <Router>
+          <Route exact path="/"  component={Slider}/>
           <Route exact path="/"  component={SpecialOffers}/>
           <Route exact path="/" component={NewArrivals}/>
           <Route exact path="/" component={HotDeals}/>

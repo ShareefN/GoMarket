@@ -22,11 +22,20 @@ class NewArrivals extends Component{
 		var that = this
 		this.setState({
 			isSelected: this.state.items[index]
-		},()=>{fetch('/addToCart', {
+		},() => {fetch('/addToCart', {
 			method: 'POST',
 			body: JSON.stringify({name: that.state.isSelected.title, price: that.state.isSelected.price}),
 			headers: { "Content-Type": "application/json" },
 		}).then(response => {
+			fetch('/addToOrders', {
+				method: 'POST',
+				body: JSON.stringify({name: that.state.isSelected.title, price: that.state.isSelected.price}),
+				headers: { "Content-Type": "application/json" },
+			}).then(data => {
+				return data.json()
+			}).catch(err => {
+				console.log(err)
+			})
 			return response.json()
 		}).then(data => {
 			this.setState({

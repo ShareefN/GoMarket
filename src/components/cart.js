@@ -20,7 +20,6 @@ class Cart extends Component{
 			}
 				this.toggelModalOpen = this.toggelModalOpen.bind(this);
 				this.toggelModalClose = this.toggelModalClose.bind(this);
-				this.cartItems = this.cartItems.bind(this);
     }
 
     componentWillMount(){
@@ -35,18 +34,6 @@ class Cart extends Component{
 				this.setState({
 					items: data,
 				})
-			})
-		}
-
-		cartItems(){
-			fetch('/addToOrders', {
-				method: 'POST',
-				body: JSON.stringify({name: this.state.items.name, price: this.state.items.price}),
-				headers: { "Content-Type": "application/json" },
-			}).then(data => {
-				return data.json()
-			}).catch(err => {
-				console.log(err)
 			})
 		}
 
@@ -110,8 +97,7 @@ class Cart extends Component{
                         <TableCell>{item.name}</TableCell>
 												<TableCell>1</TableCell>
                         <TableCell>{item.price} JD</TableCell>
-												<TableCell><DeleteForeverIcon onClick={this.deleteItem} /></TableCell>
-                        {/* remove item btn */}
+												<TableCell><DeleteForeverIcon /></TableCell>
                       </TableRow>
                     </TableBody>
 										</Fragment>
@@ -119,7 +105,7 @@ class Cart extends Component{
 										})}
                     <TableRow>
                       <TableCell><Button type="submit" size="small" color="primary" onClick={this.toggelModalClose}>Continue Shopping</Button></TableCell>{" "}
-                      <TableCell><Button type="submit" size="small" color="primary" href="/map" onClick={this.cartItems} disabled={this.state.items.length === 0}>Checkout</Button></TableCell>
+                      <TableCell><Button type="submit" size="small" color="primary" href="/map" disabled={this.state.items.length === 0}>Checkout</Button></TableCell>
                     </TableRow>
                   </Table>
 								</Paper>
