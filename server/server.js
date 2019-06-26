@@ -21,28 +21,6 @@ app.get("/home", (req, res) => {
 	res.send("hi")
 })
 
-const nexmo = new Nexmo({
-	apiKey: '4a1dcce6',
-	apiSecret: 'ZnAI64DyUHDSa4fv'
-}, {debug: true});
-
-app.post('/sendMsg', (req, res) => {
-	const from = 'Nexmo'
-	const number = "962780049003";
-	const text = 'Expect to receive your order in 45min, our team are on the way!';
-
-	nexmo.message.sendSms(
-		from, number,  text, { type: 'unicode' },
-		(err, responseData) => {
-			if(err){
-				console.log(err)
-			}else{
-				console.log(responseData)
-			}
-		}
-		);
-})
-
 app.listen(port, () => {
 	console.log(`Conneceted to port ${port}`);
 });
