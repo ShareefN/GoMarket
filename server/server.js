@@ -6,7 +6,7 @@ const users = require('./router');
 const port = process.env.PORT || 6060;
 const app = express().use('*', cors());
 
-app.use(express.static(__dirname + '../build/statis'));
+app.use(express.static(__dirname + '../build/static'));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
