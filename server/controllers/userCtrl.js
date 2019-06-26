@@ -64,14 +64,6 @@ exports.user = function(req, res){
 	})
 }
 
-exports.sendMsg = function(req, res){
-	const from = 'Nexmo';
-	const to = '962780049003';
-	const text = 'Expect to receive your order in 45min, our team are on the way!';
-
-	nexmo.message.sendSms(from, to, text);
-}
-
 exports.Gym = function(req, res){
 	Gym.create(req.body).then(item => {
 		return res.send(item)

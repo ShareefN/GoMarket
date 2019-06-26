@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("GoMarket", "root", "1111", {
+const sequelize = new Sequelize("P6CCQKiVBX", "P6CCQKiVBX", "2g0cZHIYlM", {
 
-    host: "localhost",
+    host: "remotemysql.com",
     dialect: "mysql",
     logging: false
   });
