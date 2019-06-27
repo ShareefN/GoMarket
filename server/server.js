@@ -22,8 +22,8 @@ app.get('/', function (req, res) {
 });
 
 app.use('/', users.router)
-app.get("/", (req, res) => {
-	res.send("/")
+app.get('/', (req, res) => {
+	res.send('/')
 })
 app.get('/*', function (req, res) {
 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
