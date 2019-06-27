@@ -16,9 +16,9 @@ app.use(function(req, res, next) {
   });
 
 app.use(express.static(__dirname));
-app.use(express.static(path.resolve(__dirname, "/build")));
+app.use(express.static(path.resolve(__dirname, "../build")));
 app.get('/', function (req, res) {
- return res.send('index');
+ return res.send('/home');
 });
 
 app.use('/', users.router)
@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
 	res.send('/')
 })
 app.get('/*', function (req, res) {
-	res.sendFile(path.join(__dirname, 'build'));
- });
+	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 app.listen(port, () => {
 	console.log(`Conneceted to port ${port}`);
