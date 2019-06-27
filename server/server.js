@@ -6,7 +6,6 @@ const port = process.env.PORT || 6060;
 const app = express().use('*', cors());
 const path = require("path")
 
-//app.use(express.static(__dirname + '../build/static/js'));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
@@ -16,14 +15,11 @@ app.use(function(req, res, next) {
 	 next();
   });
 
-// the __dirname is the current directory from where the script is running
 app.use(express.static(__dirname));
-
 app.use(express.static(path.resolve(__dirname, "../build")));
-app.get('/ping', function (req, res) {
- return res.send('pong');
+app.get('/', function (req, res) {
+ return res.send('/home');
 });
-
 
 app.use('/', users.router)
 app.get("/home", (req, res) => {
