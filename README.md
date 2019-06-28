@@ -5,7 +5,7 @@
 
 ## Getting Started
 
-This application was created with create-react-app for Front-End, Nodejs Express and myql database for Back-End
+This application was created with create-react-app for Front-End, Nodejs Express and mysql database for Back-End
 
 ## Prerequisites
 
