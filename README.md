@@ -9,8 +9,6 @@ This application was created with create-react-app for Front-End, Nodejs Express
 
 ## Prerequisites
 
-What things you need to install the software and how to install them
-
 npm install
 
 ## Requirements
