@@ -17,4 +17,5 @@ Node v10.16.0
 
 ## Deployment 
 
+https://market-go.herokuapp.com/
 
