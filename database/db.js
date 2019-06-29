@@ -9,7 +9,7 @@ const sequelize = new Sequelize("P6CCQKiVBX", "P6CCQKiVBX", "2g0cZHIYlM", {
 
 sequelize.authenticate()
  .then(() => console.log('Database Connected!'))
- .catch(err => console.log('Error: ' + err))
+ .catch(err => console.log(err))
 
  //Schemas
 
