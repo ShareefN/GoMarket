@@ -129,6 +129,8 @@ router.route('/getOrder').get((req, res) => {
 	userCtrl.getOrder(req, res)
 })
 
+// deleting from Orders and Cart
+
 router.route('/removeItem').delete((req, res) => {
 	userCtrl.deleteCart(req, res)
 })

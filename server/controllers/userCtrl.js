@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { User, Employee, Cart, Orders, Electronics, Gym, Groceries, Newarrivals, Hotdeals, Slider, HouseHold, Game, Messages } = require('../../database/db');
 
+// creating user and employee
 exports.createUser = function(req, res){
 
 		User.create(req.body).then(user => {
@@ -64,6 +65,7 @@ exports.user = function(req, res){
 	})
 }
 
+// adding items to store
 exports.Gym = function(req, res){
 	Gym.create(req.body).then(item => {
 		return res.send(item)
