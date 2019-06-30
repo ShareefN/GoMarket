@@ -102,7 +102,7 @@ class Orders extends Component{
 										</div>
 									)
 								})}
-								<h5 class="card-title">Item: <strong>{item.name}</strong>, Quantitiy: <strong>1</strong>, Price: <strong>{item.price}</strong></h5>
+								<h5 class="card-title">Item: <strong>{item.name}</strong>, Quantitiy: <strong>1</strong>, Price: <strong>{item.price}</strong> JD</h5>
 								<h5 style={{textDecoration: 'underline', marginTop: '5%'}}>Client Requierments:</h5>
 								{this.state.messages.map(mess => {
 									return(
