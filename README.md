@@ -15,6 +15,10 @@ npm install
 
 Node v10.16.0
 
+## Demo Video 
+
+https://www.youtube.com/watch?v=nsPdTaat2Tk&t=3s
+
 ## Deployment 
 
 https://market-go.herokuapp.com/
