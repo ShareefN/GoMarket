@@ -7,6 +7,7 @@ const path = require("path")
 const port = process.env.PORT || 6060;
 const app = express().use('*', cors());
 
+// Connecting server to universal paths
 app.use('/static', express.static(path.join(__dirname, '../build//static')));
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -17,6 +18,7 @@ app.use(function(req, res, next) {
 	 next();
   });
  
+// Connecting routes to the server
 app.use('/', users.router)
 app.get("/*", (req, res) => {
 	res.sendFile('index.html', {root: path.join(__dirname, '../build/')});

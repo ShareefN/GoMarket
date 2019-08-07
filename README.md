@@ -9,7 +9,7 @@ This application was created with create-react-app for Front-End, Nodejs Express
 
 ## Prerequisites
 
-npm install
+npm install && npm run start 
 
 ## Requirements
 
